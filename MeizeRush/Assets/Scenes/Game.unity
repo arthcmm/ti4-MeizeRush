@@ -245,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 2092991001}
   offset: {x: 0, y: 9, z: 0}
-  followForce: 5
+  followForce: 10
 --- !u!4 &2092991001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3130970336350086668, guid: 48b915578ba196948afdfef6b2255e57, type: 3}
