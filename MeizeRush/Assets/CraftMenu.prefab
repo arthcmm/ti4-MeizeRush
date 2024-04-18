@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4531248941408238935}
   m_Layer: 5
   m_Name: CraftMenu
-  m_TagString: Untagged
+  m_TagString: CraftMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

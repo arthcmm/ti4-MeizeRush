@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 968459873322496654}
   - component: {fileID: 488276183756294947}
   - component: {fileID: 4190656355154307132}
+  - component: {fileID: -2171203450754625641}
+  - component: {fileID: 4447745794962831817}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -166,3 +168,37 @@ MonoBehaviour:
   placementMask:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &-2171203450754625641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5980969301395033384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eccd9f40d84764daca01c10b0fdecc22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  craftTablePrefab: {fileID: 174507017279860328, guid: 9a859c4c8242c4c82b0a80132f7d981b, type: 3}
+  minObjects: 2
+  maxObjects: 7
+  minDistance: 5
+  areaSize: {x: 50, y: 0, z: 50}
+--- !u!114 &4447745794962831817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5980969301395033384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d120b6e2fc0bd4f4398be6792418a6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 9160245542274711088, guid: ceae5cc72d7d34efdb16cee6c33f6328, type: 3}
+  minObjects: 5
+  maxObjects: 15
+  minDistance: 3
+  areaSize: {x: 30, y: 0, z: 30}
