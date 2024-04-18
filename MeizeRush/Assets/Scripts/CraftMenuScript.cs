@@ -41,19 +41,21 @@ public class CraftMenuScript : MonoBehaviour
             // Reset the previous selected button color
             ColorBlock prevColors = selectedButton.colors;
             prevColors.normalColor = normalColor;
+            prevColors.selectedColor = normalColor;
             selectedButton.colors = prevColors;
         }
 
         // Set the new selected button and change its color
         selectedButton = button;
         ColorBlock newColors = selectedButton.colors;
+        newColors.normalColor = selectedColor;
         newColors.selectedColor = selectedColor;
         selectedButton.colors = newColors;
     }
 
     public void LogSelectedItem()
     {
-        if (selectedButton != null)
+        if (selectedButton != null && selectedButton.colors.selectedColor == selectedColor)
             Debug.Log("Crafted: " + selectedButton.GetComponentInChildren<TMP_Text>().text);
         else
             Debug.Log("No item selected.");

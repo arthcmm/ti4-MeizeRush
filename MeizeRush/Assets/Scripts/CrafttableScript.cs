@@ -12,7 +12,6 @@ public class CrafttableScript : MonoBehaviour {
   private void OnTriggerEnter(Collider other) {
     if (other.gameObject == player) {
       // Player has entered the interaction zone
-      Debug.Log("Player in range");
       isOnRange = true;
     }
   }
@@ -20,7 +19,6 @@ public class CrafttableScript : MonoBehaviour {
   private void OnTriggerExit(Collider other) {
     if (other.gameObject == player) {
       // Player has left the interaction zone
-      Debug.Log("Player out of range");
       isOnRange = false;
     }
   }
