@@ -3,42 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CrafttableScript : MonoBehaviour {
-  public GameObject player;
-  public GameObject menu;
-
+  public GameObject menuPrefab; // Assign this in the Unity Inspector
+  private GameObject menuInstance;
+  private GameObject player;
   private bool isOnRange;
 
-  // Start is called before the first frame update
+  void Start() { player = GameObject.FindGameObjectWithTag("Player"); }
+
   private void OnTriggerEnter(Collider other) {
     if (other.gameObject == player) {
-      // Player has entered the interaction zone
       isOnRange = true;
+      Debug.Log("Player is in range");
     }
   }
 
   private void OnTriggerExit(Collider other) {
     if (other.gameObject == player) {
-      // Player has left the interaction zone
       isOnRange = false;
+      CloseMenu();
     }
   }
 
-  private void Update()
-{
-    if (isOnRange)
-    {
-      if(Input.GetKeyDown(KeyCode.E)){
-        OpenMenu();
-      }
-    }else{
-      CloseMenu();
+  private void Update() {
+    if (isOnRange && Input.GetKeyDown(KeyCode.E)) {
+      OpenMenu();
     }
-}
-void OpenMenu()
-  {
-    menu.SetActive(true);
   }
+
+  void OpenMenu() {
+    if (menuInstance == null) { // Ensure you don't create multiple menus
+      menuInstance = Instantiate(menuPrefab);
+    } else {
+      menuInstance.SetActive(true);
+    }
+  }
+
   void CloseMenu() {
-    menu.SetActive(false);
+    if (menuInstance != null) {
+      Destroy(menuInstance);
+      menuInstance = null; // Ensure the reference is cleared
+    }
   }
 }
