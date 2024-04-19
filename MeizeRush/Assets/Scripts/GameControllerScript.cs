@@ -63,7 +63,7 @@ public class GameControllerScript : MonoBehaviour
             }
 
             chestPositions.Add(spawnPos);
-            Instantiate(chest, spawnPos, Quaternion.identity);
+            Instantiate(chest, spawnPos, Quaternion.Euler(90, 0, 0));
         }
     }
 

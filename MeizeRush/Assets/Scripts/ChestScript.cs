@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChestScript : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     public float distancia; //1.2 parece um bom valor
     public bool aberto;
 
@@ -12,6 +12,7 @@ public class ChestScript : MonoBehaviour
     void Start()
     {
         aberto = false;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
