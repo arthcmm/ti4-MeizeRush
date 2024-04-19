@@ -32,7 +32,7 @@ public class RandomPlaceCraftTables : MonoBehaviour {
       potentialPositions.RemoveAll(p => Vector3.Distance(p, position) <
                                         minDistance);
 
-      Instantiate(craftTablePrefab, position, Quaternion.identity);
+      Instantiate(craftTablePrefab, position, Quaternion.Euler(90, 0, 0));
     }
   }
 
@@ -44,7 +44,7 @@ public class RandomPlaceCraftTables : MonoBehaviour {
     for (int x = 0; x < gridSize; x++) {
       for (int z = 0; z < gridSize; z++) {
         Vector3 pos = new Vector3(
-            -areaSize.x / 2 + (x * minDistance + minDistance / 2), 0.0f,
+            -areaSize.x / 2 + (x * minDistance + minDistance / 2), 0.5f,
             -areaSize.z / 2 + (z * minDistance + minDistance / 2));
 
         if (pos.x <= areaSize.x / 2 && pos.z <= areaSize.z / 2)

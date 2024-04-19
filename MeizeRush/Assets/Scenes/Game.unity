@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35065674f29a3a241a04ac659a3da841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7
   animator: {fileID: 0}
 --- !u!136 &8504158895755420119
 CapsuleCollider:
@@ -1450,7 +1450,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2040066042, guid: 996eb6508b234374daadf1dede5df85a, type: 3}
+  m_Sprite: {fileID: 1593772301, guid: 18118e2cf28064c23bd1c08848b46601, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

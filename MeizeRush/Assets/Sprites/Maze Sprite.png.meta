@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 996eb6508b234374daadf1dede5df85a
+guid: 18118e2cf28064c23bd1c08848b46601
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Windows Store Apps
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mazeSprite_front
+      name: Maze Sprite_0
       rect:
         serializedVersion: 2
         x: 7
@@ -118,20 +118,20 @@ TextureImporter:
         width: 18
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 816626660084e024e86b004b85cb498b
-      internalID: -2040066042
+      spriteID: 514a326b87e8244de99f7a372cdb5092
+      internalID: 1593772301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mazeSprite_back
+      name: Maze Sprite_1
       rect:
         serializedVersion: 2
         x: 39
@@ -139,20 +139,20 @@ TextureImporter:
         width: 18
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8504f8b556a307b468adafcbeb2f1071
-      internalID: 1995403853
+      spriteID: b1fca010388f147e4a8eca5a2e187b72
+      internalID: -1491796086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mazeSprite_walkfront
+      name: Maze Sprite_2
       rect:
         serializedVersion: 2
         x: 72
@@ -160,20 +160,20 @@ TextureImporter:
         width: 18
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d40e5c1932988544985ab0be896eec6
-      internalID: 1554864590
+      spriteID: 13680311e519f43dba1aa2f63a2a610e
+      internalID: 1432423135
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mazeSprite_walkback
+      name: Maze Sprite_3
       rect:
         serializedVersion: 2
         x: 102
@@ -181,20 +181,104 @@ TextureImporter:
         width: 18
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d01709358e8971c43a41f204e5bddeee
-      internalID: 666046024
+      spriteID: c948545934484413799003af78ba88ba
+      internalID: 556335331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mazeSprite_walkfront2
+      name: Maze Sprite_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 236
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22efbbc1e64354ae9bb27382f533da83
+      internalID: -289586810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maze Sprite_5
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 236
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 810b9cfe0f54645338eb630e6d239882
+      internalID: 1624871929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maze Sprite_6
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 236
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47445985e602e4688af635ba4b3616cd
+      internalID: 622669334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maze Sprite_7
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 236
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4faae11c661fa42ec89d2064d3152f07
+      internalID: -1388517213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maze Sprite_8
       rect:
         serializedVersion: 2
         x: 71
@@ -202,20 +286,20 @@ TextureImporter:
         width: 18
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 544834599faacc54fae1074e9598081d
-      internalID: 2082713874
+      spriteID: d9538b08f1f914d8c97defb8a3b08359
+      internalID: -635577040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mazeSprite_walkback2
+      name: Maze Sprite_9
       rect:
         serializedVersion: 2
         x: 102
@@ -223,14 +307,56 @@ TextureImporter:
         width: 18
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fce4e73a1884f8d42a7d7e4b9d498cb9
-      internalID: 1965150465
+      spriteID: f5b4e2035e2d5486e8b4c2d237d15536
+      internalID: 1119043715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maze Sprite_10
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 188
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae76ced19b6f24568b0d89b139388990
+      internalID: 1445102952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maze Sprite_11
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 188
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 355b08851f4d84d3a9f5d6783164f1dd
+      internalID: -1244557545
       vertices: []
       indices: 
       edges: []
@@ -246,12 +372,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      mazeSprite_back: 1995403853
-      mazeSprite_front: -2040066042
-      mazeSprite_walkback: 666046024
-      mazeSprite_walkback2: 1965150465
-      mazeSprite_walkfront: 1554864590
-      mazeSprite_walkfront2: 2082713874
+      Maze Sprite_0: 1593772301
+      Maze Sprite_1: -1491796086
+      Maze Sprite_10: 1445102952
+      Maze Sprite_11: -1244557545
+      Maze Sprite_2: 1432423135
+      Maze Sprite_3: 556335331
+      Maze Sprite_4: -289586810
+      Maze Sprite_5: 1624871929
+      Maze Sprite_6: 622669334
+      Maze Sprite_7: -1388517213
+      Maze Sprite_8: -635577040
+      Maze Sprite_9: 1119043715
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
