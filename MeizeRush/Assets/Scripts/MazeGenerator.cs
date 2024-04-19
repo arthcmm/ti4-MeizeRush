@@ -42,20 +42,20 @@ public class MazeGenerator : MonoBehaviour
     public void CreateLayout()
     {
         InitValues();
-        Vector2 startPos = new Vector2(-(cellSize * (mazeColumns / 2)) + (cellSize / 2), -(cellSize * (mazeRows / 2)) + (cellSize / 2));
-        Vector2 spawnPos = startPos;
+        Vector3 startPos = new Vector3(-(cellSize * (mazeColumns / 2)) + (cellSize / 2), -(cellSize * (mazeRows / 2)) + (cellSize / 2));
+        Vector3 spawnPos = startPos;
 
         for (int x = 1; x <= mazeColumns; x++)
         {
-            for (int y = 1; y <= mazeRows; y++)
+            for (int z = 1; z <= mazeRows; z++)
             {
-                GenerateCell(spawnPos, new Vector2(x, y));
+                GenerateCell(spawnPos, new Vector3(x, z));
 
-                spawnPos.y += cellSize;
+                spawnPos.z += cellSize+9;
             }
 
-            spawnPos.y = startPos.y;
-            spawnPos.x += cellSize;
+            spawnPos.z = startPos.z;
+            spawnPos.x += cellSize+9;
         }
 
         CreateCentre();
@@ -171,7 +171,7 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
-    public void GenerateCell(Vector2 pos, Vector2 keyPos)
+    public void GenerateCell(Vector3 pos, Vector3 keyPos)
     {
         Cell newCell = new Cell();
         newCell.gridPos = keyPos;
