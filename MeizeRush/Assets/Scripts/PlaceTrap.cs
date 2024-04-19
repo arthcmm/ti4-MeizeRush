@@ -20,10 +20,10 @@ public class PlaceTrap : MonoBehaviour
     {
 
         Vector3 positionToPlace = playerTransform.position;
-        positionToPlace.y = positionToPlace.y - (float)0.5;
+        positionToPlace.y = positionToPlace.y - (float)0.01;
 
-         // Define the size of the check area (this should match or be slightly larger than the object's size)
-        Vector3 checkSize = new Vector3((float)0.5, (float)0.5, (float)0.5);  // Adjust this size according to your sphere's size
+        // Define the size of the check area (this should match or be slightly larger than the object's size)
+        Vector3 checkSize = new Vector3((float)1, (float)1, (float)1);  // Adjust this size according to your sphere's size
 
         // Check if the area at the player's feet is clear
         Collider[] hits = Physics.OverlapBox(positionToPlace, checkSize / 2, Quaternion.identity, placementMask);
@@ -32,17 +32,18 @@ public class PlaceTrap : MonoBehaviour
         // If there is an object, destroy the first one found; otherwise, place a new object
         if (hits.Length > 0)
         {
-            if(hits[0].CompareTag("Trap")){
+            if (hits[0].CompareTag("Trap"))
+            {
                 // Log and remove the first interactable object encountered
                 Debug.Log("Removing object: " + hits[0].gameObject.name);
-                Destroy(hits[0].gameObject);    
+                Destroy(hits[0].gameObject);
             }
         }
         else
         {
             // No object found, place a new one
             Debug.Log("Placing new object at: " + positionToPlace);
-            Instantiate(objectToPlace, positionToPlace, Quaternion.identity);
+            Instantiate(objectToPlace, positionToPlace, Quaternion.Euler(90, 0, 0));
         }
     }
 

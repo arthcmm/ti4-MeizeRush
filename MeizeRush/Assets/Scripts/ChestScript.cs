@@ -6,7 +6,8 @@ public class ChestScript : MonoBehaviour
 {
     private Transform player;
     public float distancia; //1.2 parece um bom valor
-    public bool aberto;
+    private bool aberto;
+    public Sprite openChest;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class ChestScript : MonoBehaviour
                 if (!aberto)
                 {
                     aberto = true;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = openChest;
                     int item = Random.Range(0, 9);
                     switch (item)
                     {

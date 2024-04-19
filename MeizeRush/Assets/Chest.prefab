@@ -53,7 +53,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.96, y: 2.47, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3416447658207445397
 MonoBehaviour:
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distancia: 1.2
-  aberto: 0
+  openChest: {fileID: 1768790996, guid: 0646363add2a9ae41804de3376ad11b8, type: 3}
 --- !u!212 &3476545786696388257
 SpriteRenderer:
   m_ObjectHideFlags: 0
