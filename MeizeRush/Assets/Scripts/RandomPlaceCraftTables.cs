@@ -44,7 +44,7 @@ public class RandomPlaceCraftTables : MonoBehaviour {
     for (int x = 0; x < gridSize; x++) {
       for (int z = 0; z < gridSize; z++) {
         Vector3 pos = new Vector3(
-            -areaSize.x / 2 + (x * minDistance + minDistance / 2), 0.5f,
+            -areaSize.x / 2 + (x * minDistance + minDistance / 2), 1.66f,
             -areaSize.z / 2 + (z * minDistance + minDistance / 2));
 
         if (pos.x <= areaSize.x / 2 && pos.z <= areaSize.z / 2)

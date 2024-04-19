@@ -22,7 +22,7 @@ public class GameControllerScript : MonoBehaviour {
   Vector3 getRandomPos() {
     float xSpawn = Random.Range(-mapSize, mapSize);
     float zSpawn = Random.Range(-mapSize, mapSize);
-    return new Vector3(xSpawn, 0.49f, zSpawn);
+    return new Vector3(xSpawn, 1.66f, zSpawn);
   }
 
   void spawnChests(int chestNumber) {

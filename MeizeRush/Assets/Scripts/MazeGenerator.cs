@@ -42,7 +42,7 @@ public class MazeGenerator : MonoBehaviour
     public void CreateLayout()
     {
         InitValues();
-        Vector3 startPos = new Vector3(-(cellSize * (mazeColumns / 2)) + (cellSize / 2), -(cellSize * (mazeRows / 2)) + (cellSize / 2));
+        Vector3 startPos = new Vector3(-(cellSize * (mazeColumns / 2)) + (cellSize / 2),0.6f, -(cellSize * (mazeRows / 2)) + (cellSize / 2));
         Vector3 spawnPos = startPos;
 
         for (int x = 1; x <= mazeColumns; x++)
