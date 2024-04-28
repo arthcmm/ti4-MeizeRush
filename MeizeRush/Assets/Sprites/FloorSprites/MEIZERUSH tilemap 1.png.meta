@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: affa6957a08982c4eb96b8d03a6e594e
+guid: 17904a66d5055af469dd3cefec5a12da
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,6 +94,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -110,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_0
+      name: MEIZERUSH tilemap 1_0
       rect:
         serializedVersion: 2
         x: 32
@@ -124,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b7258028cbd3984cbd55616b77111ff
-      internalID: 22895550
+      spriteID: b87eac7cdad05af48abf2397767cc43b
+      internalID: -1220190067
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_1
+      name: MEIZERUSH tilemap 1_1
       rect:
         serializedVersion: 2
         x: 48
@@ -145,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42a7d6254588594428304d8a1b8296f7
-      internalID: -1799758933
+      spriteID: 294b6b59b1e5be145a84bee43c17ffcb
+      internalID: -316833925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_2
+      name: MEIZERUSH tilemap 1_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad8cf11e4e1a16b49a27cf9610e4b6a9
-      internalID: 1462283626
+      spriteID: 86cb68a1fc3ce894895363e12aba91f2
+      internalID: -2117307451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_3
+      name: MEIZERUSH tilemap 1_3
       rect:
         serializedVersion: 2
         x: 80
@@ -187,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b33133d0edd98942a0712ebee7cb780
-      internalID: 1783105905
+      spriteID: e0d909ae951c36e42b71906d98df2198
+      internalID: 1549429204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_4
+      name: MEIZERUSH tilemap 1_4
       rect:
         serializedVersion: 2
         x: 96
@@ -208,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b59a98558587d454aab62107f7f090bb
-      internalID: -74543614
+      spriteID: 4daffd70dc643c644bd96ab9b3fe7806
+      internalID: 1242855414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_5
+      name: MEIZERUSH tilemap 1_5
       rect:
         serializedVersion: 2
         x: 112
@@ -229,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37f3e24be1607614697e153b43d56704
-      internalID: 565990131
+      spriteID: 3f693b9bf369d3d438aa264d5df4b319
+      internalID: 458199706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_6
+      name: MEIZERUSH tilemap 1_6
       rect:
         serializedVersion: 2
         x: 128
@@ -250,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de7326eae15caea459f10f693280a64c
-      internalID: 2023950469
+      spriteID: a4f4269faecc5294dbf81b2f913109aa
+      internalID: 1244219304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_7
+      name: MEIZERUSH tilemap 1_7
       rect:
         serializedVersion: 2
         x: 32
@@ -271,14 +284,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0af1ec489aff7d342b3dd9c519d666c9
-      internalID: 516804106
+      spriteID: 30177c8454fbaf544bc910f61ec52868
+      internalID: 419457943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_8
+      name: MEIZERUSH tilemap 1_8
       rect:
         serializedVersion: 2
         x: 48
@@ -292,14 +305,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e23ff7341b056c3438942e87e0df734f
-      internalID: 1278235478
+      spriteID: b3badf1e455520b44aa6ac533677d9da
+      internalID: 1802007404
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_9
+      name: MEIZERUSH tilemap 1_9
       rect:
         serializedVersion: 2
         x: 64
@@ -313,14 +326,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bc8fae3b27aaaa4189b5a7ddf476ee1
-      internalID: 1823551809
+      spriteID: 734a159e3b5c3d94486fa0d732a70888
+      internalID: -1239296177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_10
+      name: MEIZERUSH tilemap 1_10
       rect:
         serializedVersion: 2
         x: 80
@@ -334,14 +347,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b56f67743d265d44c968054727f3ebd5
-      internalID: 922643378
+      spriteID: 23e6558f5d2232e41b7675a2d6efc74b
+      internalID: 1951024919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_11
+      name: MEIZERUSH tilemap 1_11
       rect:
         serializedVersion: 2
         x: 96
@@ -355,14 +368,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b247f3d28fd900429d349027f71672a
-      internalID: -853728369
+      spriteID: ad74e309afb5dce45b16df4b8b43236b
+      internalID: -353894047
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_12
+      name: MEIZERUSH tilemap 1_12
       rect:
         serializedVersion: 2
         x: 112
@@ -376,14 +389,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c1c54ebd49a0a34aa510165cd2e32fa
-      internalID: 309552546
+      spriteID: ffaa4fb0b1400ce4993143b22a4c0432
+      internalID: -149724737
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_13
+      name: MEIZERUSH tilemap 1_13
       rect:
         serializedVersion: 2
         x: 128
@@ -397,14 +410,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2e7ec7356b4b4546a75e81a1e062901
-      internalID: -1626349832
+      spriteID: a57eb33e2417b99429861034b279069d
+      internalID: 1918251825
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_14
+      name: MEIZERUSH tilemap 1_14
       rect:
         serializedVersion: 2
         x: 32
@@ -418,14 +431,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01f0fd03e591ae6448a48b35c7011046
-      internalID: -829067146
+      spriteID: eec694b076ae58d4dade8c6258d80416
+      internalID: 1051662293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_15
+      name: MEIZERUSH tilemap 1_15
       rect:
         serializedVersion: 2
         x: 48
@@ -439,14 +452,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a9d69ebb828d9447b2f0ede6b2171cf
-      internalID: 1021925579
+      spriteID: d0dbfd5550a7b1d4a83b145cdae1efb6
+      internalID: -83355501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_16
+      name: MEIZERUSH tilemap 1_16
       rect:
         serializedVersion: 2
         x: 64
@@ -460,14 +473,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7307ccdb12319c14e97bd51ea3ea33a8
-      internalID: -1421256202
+      spriteID: 53103ff85f261b4479b0070ba8145f75
+      internalID: -1845313267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_17
+      name: MEIZERUSH tilemap 1_17
       rect:
         serializedVersion: 2
         x: 80
@@ -481,14 +494,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9d589c52671db240a5c6fb15182c728
-      internalID: -91026064
+      spriteID: 68132deecd7aed3439121dca8820f7fe
+      internalID: 944334893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_18
+      name: MEIZERUSH tilemap 1_18
       rect:
         serializedVersion: 2
         x: 96
@@ -502,14 +515,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6411cd1d48b4e3a4483368001d95bb4c
-      internalID: -837647713
+      spriteID: e1d6d8561dcec6a42b77b62438a51688
+      internalID: -608309626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_19
+      name: MEIZERUSH tilemap 1_19
       rect:
         serializedVersion: 2
         x: 112
@@ -523,14 +536,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12059527880c21e4daf420b9f549ea40
-      internalID: 1885265539
+      spriteID: e596fc97068fe5147a9d5b3770acebde
+      internalID: 1919334322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_20
+      name: MEIZERUSH tilemap 1_20
       rect:
         serializedVersion: 2
         x: 128
@@ -544,14 +557,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7d759ab66c67ae42bc026fdb69d10c0
-      internalID: -2032378452
+      spriteID: 6ddc36998232d6349839fe7c0752fc32
+      internalID: -1897047173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_21
+      name: MEIZERUSH tilemap 1_21
       rect:
         serializedVersion: 2
         x: 32
@@ -565,14 +578,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9dd87b48a9138214b8727476230e52ce
-      internalID: 273759882
+      spriteID: c0bbd8dbc286c02449366e13893000d2
+      internalID: 1086945932
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_22
+      name: MEIZERUSH tilemap 1_22
       rect:
         serializedVersion: 2
         x: 48
@@ -586,14 +599,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2eda549727c466f48b7fbfb04ced322f
-      internalID: -260145068
+      spriteID: 827170c66969a9e439ebd58ca66613fc
+      internalID: 319497083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_23
+      name: MEIZERUSH tilemap 1_23
       rect:
         serializedVersion: 2
         x: 64
@@ -607,14 +620,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b7fba95bcde01544a7734f55f654dce
-      internalID: 1899134826
+      spriteID: 1ea108e8d642277419146be867c00d96
+      internalID: -2115271893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_24
+      name: MEIZERUSH tilemap 1_24
       rect:
         serializedVersion: 2
         x: 80
@@ -628,14 +641,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0454462065bb40a4cae53bd3df74442c
-      internalID: 41747703
+      spriteID: 7886199133196f94e980983d5e3f9143
+      internalID: 1863297851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_25
+      name: MEIZERUSH tilemap 1_25
       rect:
         serializedVersion: 2
         x: 96
@@ -649,14 +662,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a87c4ba1d469f544b87de40d43177ceb
-      internalID: -896698532
+      spriteID: f9d9e7b72c8aa8d44aab6fbccee5d93e
+      internalID: -108016503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_26
+      name: MEIZERUSH tilemap 1_26
       rect:
         serializedVersion: 2
         x: 112
@@ -670,14 +683,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29bfb662ce658624ba442e402f4f52c2
-      internalID: 1142609491
+      spriteID: 9628732c8b8597c44ac1f91f8ef64e59
+      internalID: 17225377
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_27
+      name: MEIZERUSH tilemap 1_27
       rect:
         serializedVersion: 2
         x: 128
@@ -691,14 +704,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20a3ad3b5f2bef24792d93f9830b5f4c
-      internalID: 1351422876
+      spriteID: 7e06f20cf29809a4ab4521e0e0f8e833
+      internalID: 333622184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_28
+      name: MEIZERUSH tilemap 1_28
       rect:
         serializedVersion: 2
         x: 32
@@ -712,14 +725,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11b8670de3c5f1c4eac7463e13e85519
-      internalID: 1692021668
+      spriteID: 32a03cd6d07448a4d978099549b0e3e6
+      internalID: -1113094457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_29
+      name: MEIZERUSH tilemap 1_29
       rect:
         serializedVersion: 2
         x: 48
@@ -733,14 +746,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d235e3f3afdc494ca7805e06fed9e0f
-      internalID: -1004654760
+      spriteID: f28dd4d4b7663344da3c6d6de2aca099
+      internalID: 1486796991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_30
+      name: MEIZERUSH tilemap 1_30
       rect:
         serializedVersion: 2
         x: 64
@@ -754,14 +767,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29b7e7cfafc8d02489a8e83643c71f11
-      internalID: -1459319780
+      spriteID: 8d9146451dbe0ff47a5db9181cc33b9e
+      internalID: -475178165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_31
+      name: MEIZERUSH tilemap 1_31
       rect:
         serializedVersion: 2
         x: 80
@@ -775,14 +788,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc3f8eeea1709d647b117f90aaf3cd53
-      internalID: -1236253366
+      spriteID: 8afa19ab8fb5de64593241953fb07199
+      internalID: 53674130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_32
+      name: MEIZERUSH tilemap 1_32
       rect:
         serializedVersion: 2
         x: 96
@@ -796,14 +809,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc24d48a000b9ca40897733645e2c69a
-      internalID: -181311117
+      spriteID: 253d5005818802e44a7520bb4328f205
+      internalID: 1588959586
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_33
+      name: MEIZERUSH tilemap 1_33
       rect:
         serializedVersion: 2
         x: 112
@@ -817,14 +830,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a39ac7bbe4d9b64989b8c05e9d5f723
-      internalID: -265920613
+      spriteID: b1941cca3cc844c40b05f7875c468fef
+      internalID: 1548743401
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_34
+      name: MEIZERUSH tilemap 1_34
       rect:
         serializedVersion: 2
         x: 128
@@ -838,14 +851,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bad31c5d51c16854592bf5831ea43533
-      internalID: -2073017766
+      spriteID: 0538b41ac6ba3424fb1e1217e6b0dee0
+      internalID: 566044345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_35
+      name: MEIZERUSH tilemap 1_35
       rect:
         serializedVersion: 2
         x: 176
@@ -859,14 +872,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: faff27a6f747b9a47bb733c1c84e9ed3
-      internalID: 2013141267
+      spriteID: 5dea0abd7114d8a4eb9644e3993e216e
+      internalID: -1551377943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_36
+      name: MEIZERUSH tilemap 1_36
       rect:
         serializedVersion: 2
         x: 192
@@ -880,14 +893,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9bac960455f1d54bb28243ecaa6c539
-      internalID: 315886705
+      spriteID: 856e04b744ff6294d99eed5a178c9d92
+      internalID: 1900730284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_37
+      name: MEIZERUSH tilemap 1_37
       rect:
         serializedVersion: 2
         x: 32
@@ -901,14 +914,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33e20efbce0a571449901d8a6f74d029
-      internalID: 1786301401
+      spriteID: a379c2961bdade74f963f92c254f60ce
+      internalID: -871364534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_38
+      name: MEIZERUSH tilemap 1_38
       rect:
         serializedVersion: 2
         x: 48
@@ -922,14 +935,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8eb15937d3d803f438d6e3bade11114a
-      internalID: 133839399
+      spriteID: 14509e34ec8649e499af14a9070d42f0
+      internalID: 1926716246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_39
+      name: MEIZERUSH tilemap 1_39
       rect:
         serializedVersion: 2
         x: 64
@@ -943,14 +956,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3db11bb28a769f4d9682f3bb8d7ed59
-      internalID: -956999727
+      spriteID: 94f0ffdb66944334c9256f4af2146636
+      internalID: -1985376128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_40
+      name: MEIZERUSH tilemap 1_40
       rect:
         serializedVersion: 2
         x: 80
@@ -964,14 +977,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ff3a5b84043e674a8297a44d25873a7
-      internalID: 821934433
+      spriteID: e9b2fc174232e81439b4bc2a04e738cf
+      internalID: 1631145429
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_41
+      name: MEIZERUSH tilemap 1_41
       rect:
         serializedVersion: 2
         x: 96
@@ -985,14 +998,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a9102d0e6fe18b46895e3d27f4fbf34
-      internalID: 1335811292
+      spriteID: 987a3217d24c34e46b085eacc04119cf
+      internalID: 1589313146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_42
+      name: MEIZERUSH tilemap 1_42
       rect:
         serializedVersion: 2
         x: 112
@@ -1006,14 +1019,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 361ba1a1473b31a4e87d963906811a2e
-      internalID: -2032412571
+      spriteID: 836bb5686a1614946b2e874234bcbf38
+      internalID: 897149907
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_43
+      name: MEIZERUSH tilemap 1_43
       rect:
         serializedVersion: 2
         x: 128
@@ -1027,14 +1040,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42a0b8191ae477c42ac6a3b259129b81
-      internalID: 530260642
+      spriteID: c423237bf35b6f4408019cae7f2ec508
+      internalID: 1389017516
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_44
+      name: MEIZERUSH tilemap 1_44
       rect:
         serializedVersion: 2
         x: 176
@@ -1048,14 +1061,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1f774fa4992ad5448203eb60d8c2664
-      internalID: 765689670
+      spriteID: 4849e7ebc9d4187498de9fdcdd610876
+      internalID: -764031792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEIZERUSH tilemap_45
+      name: MEIZERUSH tilemap 1_45
       rect:
         serializedVersion: 2
         x: 192
@@ -1069,8 +1082,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c30738e104db0d43be6990b53484354
-      internalID: -1753911518
+      spriteID: c1c18068c0769df4cb70e1c3465986d2
+      internalID: 157180104
       vertices: []
       indices: 
       edges: []
@@ -1086,52 +1099,52 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MEIZERUSH tilemap_0: 22895550
-      MEIZERUSH tilemap_1: -1799758933
-      MEIZERUSH tilemap_10: 922643378
-      MEIZERUSH tilemap_11: -853728369
-      MEIZERUSH tilemap_12: 309552546
-      MEIZERUSH tilemap_13: -1626349832
-      MEIZERUSH tilemap_14: -829067146
-      MEIZERUSH tilemap_15: 1021925579
-      MEIZERUSH tilemap_16: -1421256202
-      MEIZERUSH tilemap_17: -91026064
-      MEIZERUSH tilemap_18: -837647713
-      MEIZERUSH tilemap_19: 1885265539
-      MEIZERUSH tilemap_2: 1462283626
-      MEIZERUSH tilemap_20: -2032378452
-      MEIZERUSH tilemap_21: 273759882
-      MEIZERUSH tilemap_22: -260145068
-      MEIZERUSH tilemap_23: 1899134826
-      MEIZERUSH tilemap_24: 41747703
-      MEIZERUSH tilemap_25: -896698532
-      MEIZERUSH tilemap_26: 1142609491
-      MEIZERUSH tilemap_27: 1351422876
-      MEIZERUSH tilemap_28: 1692021668
-      MEIZERUSH tilemap_29: -1004654760
-      MEIZERUSH tilemap_3: 1783105905
-      MEIZERUSH tilemap_30: -1459319780
-      MEIZERUSH tilemap_31: -1236253366
-      MEIZERUSH tilemap_32: -181311117
-      MEIZERUSH tilemap_33: -265920613
-      MEIZERUSH tilemap_34: -2073017766
-      MEIZERUSH tilemap_35: 2013141267
-      MEIZERUSH tilemap_36: 315886705
-      MEIZERUSH tilemap_37: 1786301401
-      MEIZERUSH tilemap_38: 133839399
-      MEIZERUSH tilemap_39: -956999727
-      MEIZERUSH tilemap_4: -74543614
-      MEIZERUSH tilemap_40: 821934433
-      MEIZERUSH tilemap_41: 1335811292
-      MEIZERUSH tilemap_42: -2032412571
-      MEIZERUSH tilemap_43: 530260642
-      MEIZERUSH tilemap_44: 765689670
-      MEIZERUSH tilemap_45: -1753911518
-      MEIZERUSH tilemap_5: 565990131
-      MEIZERUSH tilemap_6: 2023950469
-      MEIZERUSH tilemap_7: 516804106
-      MEIZERUSH tilemap_8: 1278235478
-      MEIZERUSH tilemap_9: 1823551809
+      MEIZERUSH tilemap 1_0: -1220190067
+      MEIZERUSH tilemap 1_1: -316833925
+      MEIZERUSH tilemap 1_10: 1951024919
+      MEIZERUSH tilemap 1_11: -353894047
+      MEIZERUSH tilemap 1_12: -149724737
+      MEIZERUSH tilemap 1_13: 1918251825
+      MEIZERUSH tilemap 1_14: 1051662293
+      MEIZERUSH tilemap 1_15: -83355501
+      MEIZERUSH tilemap 1_16: -1845313267
+      MEIZERUSH tilemap 1_17: 944334893
+      MEIZERUSH tilemap 1_18: -608309626
+      MEIZERUSH tilemap 1_19: 1919334322
+      MEIZERUSH tilemap 1_2: -2117307451
+      MEIZERUSH tilemap 1_20: -1897047173
+      MEIZERUSH tilemap 1_21: 1086945932
+      MEIZERUSH tilemap 1_22: 319497083
+      MEIZERUSH tilemap 1_23: -2115271893
+      MEIZERUSH tilemap 1_24: 1863297851
+      MEIZERUSH tilemap 1_25: -108016503
+      MEIZERUSH tilemap 1_26: 17225377
+      MEIZERUSH tilemap 1_27: 333622184
+      MEIZERUSH tilemap 1_28: -1113094457
+      MEIZERUSH tilemap 1_29: 1486796991
+      MEIZERUSH tilemap 1_3: 1549429204
+      MEIZERUSH tilemap 1_30: -475178165
+      MEIZERUSH tilemap 1_31: 53674130
+      MEIZERUSH tilemap 1_32: 1588959586
+      MEIZERUSH tilemap 1_33: 1548743401
+      MEIZERUSH tilemap 1_34: 566044345
+      MEIZERUSH tilemap 1_35: -1551377943
+      MEIZERUSH tilemap 1_36: 1900730284
+      MEIZERUSH tilemap 1_37: -871364534
+      MEIZERUSH tilemap 1_38: 1926716246
+      MEIZERUSH tilemap 1_39: -1985376128
+      MEIZERUSH tilemap 1_4: 1242855414
+      MEIZERUSH tilemap 1_40: 1631145429
+      MEIZERUSH tilemap 1_41: 1589313146
+      MEIZERUSH tilemap 1_42: 897149907
+      MEIZERUSH tilemap 1_43: 1389017516
+      MEIZERUSH tilemap 1_44: -764031792
+      MEIZERUSH tilemap 1_45: 157180104
+      MEIZERUSH tilemap 1_5: 458199706
+      MEIZERUSH tilemap 1_6: 1244219304
+      MEIZERUSH tilemap 1_7: 419457943
+      MEIZERUSH tilemap 1_8: 1802007404
+      MEIZERUSH tilemap 1_9: -1239296177
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

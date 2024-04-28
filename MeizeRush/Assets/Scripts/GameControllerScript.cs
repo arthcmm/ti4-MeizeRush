@@ -5,10 +5,10 @@ using UnityEngine;
 public class GameControllerScript : MonoBehaviour {
   public int mapSize = 50;
   public GameObject chest;
-  public Transform playerTransform; // Referência ao transform do jogador
+  public Transform playerTransform; // Referï¿½ncia ao transform do jogador
   public float minDistanceToPlayer =
-      10f; // Distância mínima entre baú e jogador
-  public float minDistanceBetweenChests = 5f; // Distância mínima entre baús
+      10f; // Distï¿½ncia mï¿½nima entre baï¿½ e jogador
+  public float minDistanceBetweenChests = 5f; // Distï¿½ncia mï¿½nima entre baï¿½s
 
   // Start is called before the first frame update
   void Start() {
@@ -21,8 +21,8 @@ public class GameControllerScript : MonoBehaviour {
 
   Vector3 getRandomPos() {
     float xSpawn = Random.Range(-mapSize, mapSize);
-    float zSpawn = Random.Range(-mapSize, mapSize);
-    return new Vector3(xSpawn, 1.66f, zSpawn);
+    float ySpawn = Random.Range(-mapSize, mapSize);
+    return new Vector3(xSpawn, ySpawn, 0);
   }
 
   void spawnChests(int chestNumber) {
@@ -35,13 +35,13 @@ public class GameControllerScript : MonoBehaviour {
       while (!validPosition) {
         spawnPos = getRandomPos();
 
-        // Verifica se a nova posição está longe o suficiente do jogador
+        // Verifica se a nova posiï¿½ï¿½o estï¿½ longe o suficiente do jogador
         if (Vector3.Distance(playerTransform.position, spawnPos) >=
             minDistanceToPlayer) {
           validPosition = true;
 
-          // Verifica se a nova posição está longe o suficiente de outras
-          // posições de baús
+          // Verifica se a nova posiï¿½ï¿½o estï¿½ longe o suficiente de outras
+          // posiï¿½ï¿½es de baï¿½s
           foreach (Vector3 pos in chestPositions) {
             if (Vector3.Distance(pos, spawnPos) < minDistanceBetweenChests) {
               validPosition = false;
@@ -52,7 +52,7 @@ public class GameControllerScript : MonoBehaviour {
       }
 
       chestPositions.Add(spawnPos);
-      Instantiate(chest, spawnPos, Quaternion.Euler(90, 0, 0));
+      Instantiate(chest, spawnPos, Quaternion.identity);
     }
   }
 }

@@ -8,7 +8,7 @@ public class RandomPlaceEnemies : MonoBehaviour
     public int minObjects;
     public int maxObjects;
     public float minDistance = 5.0f;
-    public Vector3 areaSize = new Vector3(50, 0, 50);
+    public Vector3 areaSize = new Vector3(50, 50, 0);
 
     private bool isOnRange;
 
@@ -35,7 +35,7 @@ public class RandomPlaceEnemies : MonoBehaviour
             potentialPositions.RemoveAll(p => Vector3.Distance(p, position) <
                                               minDistance);
 
-            Instantiate(enemyPrefab, position, Quaternion.Euler(90, 0, 0));
+            Instantiate(enemyPrefab, position, Quaternion.identity);
         }
     }
 
@@ -43,17 +43,16 @@ public class RandomPlaceEnemies : MonoBehaviour
     {
         List<Vector3> positions = new List<Vector3>();
         int gridSize =
-            Mathf.CeilToInt(Mathf.Max(areaSize.x, areaSize.z) / minDistance);
+            Mathf.CeilToInt(Mathf.Max(areaSize.x, areaSize.y) / minDistance);
 
         for (int x = 0; x < gridSize; x++)
         {
-            for (int z = 0; z < gridSize; z++)
+            for (int y = 0; y < gridSize; y++)
             {
                 Vector3 pos = new Vector3(
-                    -areaSize.x / 2 + (x * minDistance + minDistance / 2), 1.66f,
-                    -areaSize.z / 2 + (z * minDistance + minDistance / 2));
+                    -areaSize.x / 2 + (x * minDistance + minDistance / 2), -areaSize.y / 2 + (y * minDistance + minDistance / 2), 0);
 
-                if (pos.x <= areaSize.x / 2 && pos.z <= areaSize.z / 2)
+                if (pos.x <= areaSize.x / 2 && pos.z <= areaSize.y / 2)
                     positions.Add(pos);
             }
         }

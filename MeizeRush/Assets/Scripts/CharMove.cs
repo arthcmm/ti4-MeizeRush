@@ -23,23 +23,30 @@ public class CharMove : MonoBehaviour
 {
     [SerializeField]
     public float speed;
-    private CharacterController charController;
-    private Vector3 movement;
+    // private CharacterController charController;
+    private Rigidbody2D rigidbody2D;
+    private Vector2 movement;
     public Animator animator;
     private int lastState = (int)PlayerMoveLastState.front;
 
     private void Awake() { }
     private void Start()
     {
-        charController = GetComponent<CharacterController>();
+        // charController = GetComponent<CharacterController>();
+        rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
     void Update()
     {
-        movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0,
-                               Input.GetAxisRaw("Vertical"));
-        charController.Move(movement * Time.deltaTime * speed);
-        if (movement.x != 0 || movement.z != 0)
+        // movement = new Vector2(, );
+        movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        // movement.x = Input.GetAxisRaw("Horizontal");
+        // movement.y = Input.GetAxisRaw("Vertical");
+        // rigidbody2D.velocity.Set(movement.x * speed * Time.deltaTime, movement.y * speed * Time.deltaTime);
+        // charController.Move(movement * Time.deltaTime * speed);
+        rigidbody2D.velocity = movement * speed;
+
+        if (movement.x != 0 || movement.y != 0)
         {
             if (movement.x > 0)
             {
@@ -53,7 +60,7 @@ public class CharMove : MonoBehaviour
             }
             else
             {
-                if (movement.z > 0)
+                if (movement.y > 0)
                 {
                     animator.SetFloat("xVelocity", (int)PlayerMoveStates.playerWalkBack);
                     lastState = (int)PlayerMoveLastState.back;
