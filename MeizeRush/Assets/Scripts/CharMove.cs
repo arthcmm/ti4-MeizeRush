@@ -44,37 +44,39 @@ public class CharMove : MonoBehaviour
         // movement.y = Input.GetAxisRaw("Vertical");
         // rigidbody2D.velocity.Set(movement.x * speed * Time.deltaTime, movement.y * speed * Time.deltaTime);
         // charController.Move(movement * Time.deltaTime * speed);
+
         rigidbody2D.velocity = movement * speed;
 
         if (movement.x != 0 || movement.y != 0)
         {
             if (movement.x > 0)
             {
-                animator.SetFloat("xVelocity", (int)PlayerMoveStates.playerWalkRight);
+                animator.SetInteger("xVelocity", (int)PlayerMoveStates.playerWalkRight);
                 lastState = (int)PlayerMoveLastState.right;
             }
             else if (movement.x < 0)
             {
-                animator.SetFloat("xVelocity", (int)PlayerMoveStates.playerWalkLeft);
+                animator.SetInteger("xVelocity", (int)PlayerMoveStates.playerWalkLeft);
                 lastState = (int)PlayerMoveLastState.left;
             }
             else
             {
                 if (movement.y > 0)
                 {
-                    animator.SetFloat("xVelocity", (int)PlayerMoveStates.playerWalkBack);
+                    animator.SetInteger("xVelocity", (int)PlayerMoveStates.playerWalkBack);
                     lastState = (int)PlayerMoveLastState.back;
                 }
                 else
                 {
-                    animator.SetFloat("xVelocity", (int)PlayerMoveStates.playerWalk);
+                    animator.SetInteger("xVelocity", (int)PlayerMoveStates.playerWalk);
                     lastState = (int)PlayerMoveLastState.front;
                 }
             }
         }
         else
         {
-            animator.SetFloat("xVelocity", lastState * 2);
+            animator.SetInteger("xVelocity", lastState * 2);
         }
+        Debug.Log(lastState);
     }
 }

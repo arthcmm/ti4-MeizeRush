@@ -63,7 +63,7 @@ public class Game : MonoBehaviour
 
             if (Mathf.Min(rect.height, rect.width) / 2 < minRoomSize)
             {
-                Debug.Log("Sub-dungeon " + debugId + " will be a leaf");
+                // Debug.Log("Sub-dungeon " + debugId + " will be a leaf");
                 return false;
             }
 
@@ -107,7 +107,7 @@ public class Game : MonoBehaviour
 
                 // room position will be absolute in the board, not relative to the sub-dungeon
                 room = new Rect(rect.x + roomX, rect.y + roomY, roomWidth, roomHeight);
-                Debug.Log("Created room " + room + " in sub-dungeon " + debugId + " " + rect);
+                // Debug.Log("Created room " + room + " in sub-dungeon " + debugId + " " + rect);
             }
 
         }
@@ -142,7 +142,7 @@ public class Game : MonoBehaviour
             Rect lroom = left.GetRoom();
             Rect rroom = right.GetRoom();
 
-            Debug.Log("Creating corridor(s) between " + left.debugId + "(" + lroom + ") and " + right.debugId + " (" + rroom + ")");
+            // Debug.Log("Creating corridor(s) between " + left.debugId + "(" + lroom + ") and " + right.debugId + " (" + rroom + ")");
 
             // attach the corridor to a random point in each room
             Vector2 lpoint = new Vector2((int)Random.Range(lroom.x + 1, lroom.xMax - 1), (int)Random.Range(lroom.y + 1, lroom.yMax - 1));
@@ -159,7 +159,7 @@ public class Game : MonoBehaviour
             int w = (int)(lpoint.x - rpoint.x);
             int h = (int)(lpoint.y - rpoint.y);
 
-            Debug.Log("lpoint: " + lpoint + ", rpoint: " + rpoint + ", w: " + w + ", h: " + h);
+            // Debug.Log("lpoint: " + lpoint + ", rpoint: " + rpoint + ", w: " + w + ", h: " + h);
 
             // if the points are not aligned horizontally
             if (w != 0)
@@ -214,7 +214,7 @@ public class Game : MonoBehaviour
             Debug.Log("Corridors: ");
             foreach (Rect corridor in corridors)
             {
-                Debug.Log("corridor: " + corridor);
+                // Debug.Log("corridor: " + corridor);
             }
         }
 
@@ -223,7 +223,7 @@ public class Game : MonoBehaviour
     }
     public void CreateBSP(SubDungeon subDungeon)
     {
-        Debug.Log("Splitting sub-dungeon " + subDungeon.debugId + ": " + subDungeon.rect);
+        // Debug.Log("Splitting sub-dungeon " + subDungeon.debugId + ": " + subDungeon.rect);
         if (subDungeon.IAmLeaf())
         {
             // if the sub-dungeon is too large
@@ -234,9 +234,9 @@ public class Game : MonoBehaviour
 
                 if (subDungeon.Split(minRoomSize, maxRoomSize))
                 {
-                    Debug.Log("Splitted sub-dungeon " + subDungeon.debugId + " in "
-                      + subDungeon.left.debugId + ": " + subDungeon.left.rect + ", "
-                      + subDungeon.right.debugId + ": " + subDungeon.right.rect);
+                    // Debug.Log("Splitted sub-dungeon " + subDungeon.debugId + " in "
+                    //   + subDungeon.left.debugId + ": " + subDungeon.left.rect + ", "
+                    //   + subDungeon.right.debugId + ": " + subDungeon.right.rect);
 
                     CreateBSP(subDungeon.left);
                     CreateBSP(subDungeon.right);
