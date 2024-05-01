@@ -13,8 +13,6 @@ public class CharMove : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private Vector2 movement;
     public Animator animator;
-    private int lastState = (int)PlayerMoveLastState.front;
-
     private void Awake() { }
     private void Start()
     {
