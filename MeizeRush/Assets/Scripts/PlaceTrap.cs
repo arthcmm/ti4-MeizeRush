@@ -43,7 +43,7 @@ public class PlaceTrap : MonoBehaviour
         {
             // No object found, place a new one
             Debug.Log("Placing new object at: " + positionToPlace);
-            Instantiate(objectToPlace, positionToPlace, Quaternion.Euler(90, 0, 0));
+            Instantiate(objectToPlace, positionToPlace, Quaternion.identity);
         }
     }
 
