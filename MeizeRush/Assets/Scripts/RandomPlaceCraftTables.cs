@@ -52,7 +52,7 @@ public class RandomPlaceCraftTables : MonoBehaviour
         Vector3 pos = new Vector3(
             -areaSize.x / 2 + (x * minDistance + minDistance / 2), -areaSize.y / 2 + (y * minDistance + minDistance / 2), 0);
 
-        if (pos.x <= areaSize.x / 2 && pos.y <= areaSize.y / 2)
+        if (pos.x <= areaSize.x / 2 && pos.z <= areaSize.y / 2)
           positions.Add(pos);
       }
     }

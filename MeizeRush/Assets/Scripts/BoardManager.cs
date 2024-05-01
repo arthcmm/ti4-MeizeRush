@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Game : MonoBehaviour
+public class BoardManager : MonoBehaviour
 {
     public int boardRows, boardColumns;
     public int minRoomSize, maxRoomSize;
@@ -13,7 +14,8 @@ public class Game : MonoBehaviour
     public GameObject floorTile;
 
     private GameObject[,] boardPositionsFloor;
-    public HashSet<Vector2Int> floors = new();
+    public HashSet<Vector2Int> roomFloors = new();
+    public HashSet<Vector2Int> corridorFloors = new();
 
     public class SubDungeon
     {
@@ -89,15 +91,11 @@ public class Game : MonoBehaviour
         }
         public void CreateRoom()
         {
-            if (left != null || right != null)
-            {
-                if (left != null) { left.CreateRoom(); }
-                if (right != null) { right.CreateRoom(); }
-                if (left != null && right != null)
-                {
-                    CreateCorridorBetween(left, right);
-                }
-            }
+
+            if (left != null) { left.CreateRoom(); }
+            if (right != null) { right.CreateRoom(); }
+            if (left != null && right != null) { CreateCorridorBetween(left, right); }
+
             if (IAmLeaf())
             {
                 int roomWidth = (int)Random.Range(rect.width / 2, rect.width - 2);
@@ -259,6 +257,7 @@ public class Game : MonoBehaviour
                 {
                     Vector2Int pos = new Vector2Int(i, j);
                     floors.Add(pos);
+                    roomFloors.Add(pos);
                     // GameObject instance = Instantiate(floorTile, new Vector2(i, j), Quaternion.identity) as GameObject;
                     // instance.transform.SetParent(transform);
                     // boardPositionsFloor[i, j] = instance;
@@ -293,6 +292,7 @@ public class Game : MonoBehaviour
                     {
                         Vector2Int pos = new Vector2Int(i, j);
                         corridors.Add(pos);
+                        corridorFloors.Add(pos);
 
                         // GameObject instance = Instantiate(corridorTile, new Vector3(i, j, 0f), Quaternion.identity) as GameObject;
                         // instance.transform.SetParent(transform);
@@ -316,7 +316,7 @@ public class Game : MonoBehaviour
             {
                 for (int j = (int)subDungeon.room.y; j < subDungeon.room.yMax; j++)
                 {
-                    this.floors.Add(new Vector2Int(i, j));
+                    roomFloors.Add(new Vector2Int(i, j));
 
                 }
             }
@@ -328,16 +328,43 @@ public class Game : MonoBehaviour
         }
 
     }
+    public void getAllCorridors(SubDungeon subDungeon)
+    {
+        if (subDungeon == null)
+        {
+            return;
+        }
+
+        getAllCorridors(subDungeon.left);
+        getAllCorridors(subDungeon.right);
+        foreach (Rect corridor in subDungeon.corridors)
+        {
+            for (int i = (int)corridor.x; i < corridor.xMax; i++)
+            {
+                for (int j = (int)corridor.y; j < corridor.yMax; j++)
+                {
+                    if (boardPositionsFloor[i, j] == null)
+                    {
+                        corridorFloors.Add(new Vector2Int(i, j));
+                        // GameObject instance = Instantiate(corridorTile, new Vector3(i, j, 0f), Quaternion.identity) as GameObject;
+                        // instance.transform.SetParent(transform);
+                        // boardPositionsFloor[i, j] = instance;
+                    }
+                }
+            }
+        }
+    }
     void Start()
     {
         SubDungeon rootSubDungeon = new SubDungeon(new Rect(0, 0, boardRows, boardColumns));
         CreateBSP(rootSubDungeon);
         rootSubDungeon.CreateRoom();
-        getAllFloors(rootSubDungeon);
-        WallGenerator.CreateWalls(floors,tileMapVisualizer);
         boardPositionsFloor = new GameObject[boardRows, boardColumns];
         DrawCorridors(rootSubDungeon);
         DrawRooms(rootSubDungeon);
+        HashSet<Vector2Int> allTiles = new HashSet<Vector2Int>(roomFloors);
+        allTiles.UnionWith(corridorFloors);
+        WallGenerator.CreateWalls(allTiles, tileMapVisualizer);
     }
 }
 public static class Direction2D

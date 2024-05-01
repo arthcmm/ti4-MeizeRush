@@ -1,23 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
-
-enum PlayerMoveStates
-{
-    idle,
-    playerWalk,
-    idleBack,
-    playerWalkBack,
-    idleLeft,
-    playerWalkLeft,
-    idleRight,
-    playerWalkRight,
-}
-;
-
-enum PlayerMoveLastState { front, back, left, right }
-;
+using UnityEngine.UIElements.Experimental;
 
 public class CharMove : MonoBehaviour
 {
@@ -38,45 +24,24 @@ public class CharMove : MonoBehaviour
     }
     void Update()
     {
-        // movement = new Vector2(, );
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        // movement.x = Input.GetAxisRaw("Horizontal");
-        // movement.y = Input.GetAxisRaw("Vertical");
-        // rigidbody2D.velocity.Set(movement.x * speed * Time.deltaTime, movement.y * speed * Time.deltaTime);
-        // charController.Move(movement * Time.deltaTime * speed);
 
-        rigidbody2D.velocity = movement * speed;
+
+        rigidbody2D.velocity = speed * movement;
 
         if (movement.x != 0 || movement.y != 0)
         {
-            if (movement.x > 0)
-            {
-                animator.SetInteger("xVelocity", (int)PlayerMoveStates.playerWalkRight);
-                lastState = (int)PlayerMoveLastState.right;
-            }
-            else if (movement.x < 0)
-            {
-                animator.SetInteger("xVelocity", (int)PlayerMoveStates.playerWalkLeft);
-                lastState = (int)PlayerMoveLastState.left;
-            }
-            else
-            {
-                if (movement.y > 0)
-                {
-                    animator.SetInteger("xVelocity", (int)PlayerMoveStates.playerWalkBack);
-                    lastState = (int)PlayerMoveLastState.back;
-                }
-                else
-                {
-                    animator.SetInteger("xVelocity", (int)PlayerMoveStates.playerWalk);
-                    lastState = (int)PlayerMoveLastState.front;
-                }
-            }
+            animator.SetFloat("X", movement.x);
+
+            animator.SetFloat("Y", movement.y);
+            animator.SetBool("isWalking", true);
+
         }
         else
         {
-            animator.SetInteger("xVelocity", lastState * 2);
+            animator.SetBool("isWalking", false);
+
         }
-        Debug.Log(lastState);
+
     }
 }
