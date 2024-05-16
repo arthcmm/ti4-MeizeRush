@@ -264,7 +264,7 @@ public class BoardManager : MonoBehaviour
 
                 }
             }
-            tileMapVisualizer.PaintFloorTiles(floors);
+            tileMapVisualizer.PaintFloorTiles(floors, 7);
         }
         else
         {
@@ -300,7 +300,7 @@ public class BoardManager : MonoBehaviour
                     }
                 }
             }
-            tileMapVisualizer.PaintCorridorTiles(corridors);
+            tileMapVisualizer.PaintCorridorTiles(corridors, 1);
         }
         // Start is called before the first frame update
     }
@@ -364,7 +364,7 @@ public class BoardManager : MonoBehaviour
         DrawRooms(rootSubDungeon);
         HashSet<Vector2Int> allTiles = new HashSet<Vector2Int>(roomFloors);
         allTiles.UnionWith(corridorFloors);
-        WallGenerator.CreateWalls(allTiles, tileMapVisualizer);
+        WallGenerator.CreateWalls(allTiles, tileMapVisualizer, 0);
     }
 }
 public static class Direction2D
