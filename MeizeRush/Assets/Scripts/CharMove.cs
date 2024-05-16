@@ -20,7 +20,8 @@ public class CharMove : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
-    void Update()
+
+    private void FixedUpdate()
     {
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
@@ -40,6 +41,5 @@ public class CharMove : MonoBehaviour
             animator.SetBool("isWalking", false);
 
         }
-
     }
 }

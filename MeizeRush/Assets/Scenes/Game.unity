@@ -1059,7 +1059,7 @@ Camera:
   far clip plane: 1000
   field of view: 80.6
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1112,6 +1112,7 @@ GameObject:
   - component: {fileID: 8504158895755420127}
   - component: {fileID: 8504158895755420126}
   - component: {fileID: 8504158895755420125}
+  - component: {fileID: 8504158895755420128}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1351,7 +1352,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 20
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1403,6 +1404,19 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &8504158895755420128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5244363142777953647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9090350691f9624b907678626c42cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
