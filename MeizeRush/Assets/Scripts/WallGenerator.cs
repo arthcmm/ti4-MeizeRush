@@ -5,12 +5,12 @@ using UnityEngine;
 
 public static class WallGenerator
 {
-    public static void CreateWalls(HashSet<Vector2Int> floorPositions, TileMapVisualizer tileMapVisualizer)
+    public static void CreateWalls(HashSet<Vector2Int> floorPositions, TileMapVisualizer tileMapVisualizer, int size)
     {
 
         var basicWallPositions = FindWallsInDirections(floorPositions, Direction2D.cardinalDirectionsList);
         // var cornerWallPositions = FindWallsInDirections(floorPositions, Direction2D.diagonalDirectionsList);
-        CreateBasicWall(tileMapVisualizer, basicWallPositions, floorPositions);
+        CreateBasicWall(tileMapVisualizer, basicWallPositions, floorPositions, size);
         // CreateCornerWalls(tileMapVisualizer, cornerWallPositions, floorPositions);
 
     }
@@ -31,7 +31,7 @@ public static class WallGenerator
     }
 
 
-    private static void CreateCornerWalls(TileMapVisualizer tilemapVisualizer, HashSet<Vector2Int> cornerWallPositions, HashSet<Vector2Int> floorPositions)
+    private static void CreateCornerWalls(TileMapVisualizer tilemapVisualizer, HashSet<Vector2Int> cornerWallPositions, HashSet<Vector2Int> floorPositions, int size)
     {
         foreach (var position in cornerWallPositions)
         {
@@ -52,7 +52,7 @@ public static class WallGenerator
         }
     }
 
-    private static void CreateBasicWall(TileMapVisualizer tilemapVisualizer, HashSet<Vector2Int> basicWallPositions, HashSet<Vector2Int> floorPositions)
+    private static void CreateBasicWall(TileMapVisualizer tilemapVisualizer, HashSet<Vector2Int> basicWallPositions, HashSet<Vector2Int> floorPositions, int size)
     {
         foreach (var position in basicWallPositions)
         {
@@ -69,7 +69,7 @@ public static class WallGenerator
                     neighboursBinaryType += "0";
                 }
             }
-            tilemapVisualizer.PaintSingleBasicWall(position, neighboursBinaryType);
+            tilemapVisualizer.PaintSingleBasicWall(position, neighboursBinaryType, size);
         }
     }
 }

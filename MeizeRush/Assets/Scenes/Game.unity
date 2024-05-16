@@ -667,9 +667,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorTileMap: {fileID: 978695067}
   wallTileMap: {fileID: 259870776}
-  floorTile: {fileID: 11400000, guid: 3242ed2f0791cd0498ff5b94fbd0c089, type: 2}
-  corridorTile: {fileID: 11400000, guid: a4b89029074822c4d949913de8a63513, type: 2}
-  wallLeftTile: {fileID: 11400000, guid: b9d2979cd402a824b951edb677fd1e4e, type: 2}
+  floorTile:
+  - {fileID: 11400000, guid: 8e15257317d4ceb42932aeb3b9b8e1da, type: 2}
+  - {fileID: 11400000, guid: a504b83f7d1a80d47ac7ef272bef14fe, type: 2}
+  - {fileID: 11400000, guid: ba0fd54dbd205cb428d368ea45f53a89, type: 2}
+  - {fileID: 11400000, guid: f5fcbd92aeeb8814598741b8d2634470, type: 2}
+  - {fileID: 11400000, guid: 27d42c27d2cb23644aa96218579d28be, type: 2}
+  - {fileID: 11400000, guid: f98c0833bf0936444a0ec32b76e255a5, type: 2}
+  - {fileID: 11400000, guid: f98c0833bf0936444a0ec32b76e255a5, type: 2}
+  - {fileID: 11400000, guid: b8f5decb4316c284dacc786d71bf3094, type: 2}
+  corridorTile:
+  - {fileID: 11400000, guid: 6fe0d207be26f1c4dbbf22137b653e8f, type: 2}
+  - {fileID: 11400000, guid: 3ab680fd382a37b4b91c31b519ee3104, type: 2}
+  wallLeftTile:
+  - {fileID: 11400000, guid: 4ae79f6418a825d4f89ef67b9dc29946, type: 2}
 --- !u!4 &910320380
 Transform:
   m_ObjectHideFlags: 0
@@ -873,10 +884,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c3479a580af8e140a60200ea3ac7a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardRows: 100
-  boardColumns: 100
-  minRoomSize: 10
-  maxRoomSize: 20
+  boardRows: 70
+  boardColumns: 70
+  minRoomSize: 8
+  maxRoomSize: 12
   tileMapVisualizer: {fileID: 910320379}
   floorTile: {fileID: 0}
 --- !u!4 &1655236393
@@ -1023,7 +1034,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.3160377, g: 0.5717418, b: 1, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
