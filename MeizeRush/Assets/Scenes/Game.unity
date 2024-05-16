@@ -211,6 +211,7 @@ MonoBehaviour:
   maxObjects: 10
   minDistance: 5
   areaSize: {x: 50, y: 0, z: 50}
+  enemies: []
 --- !u!114 &40888772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1417,6 +1418,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 100
+  attackDamage: 35
+  attackCooldown: 0.5
+  enemy: {fileID: -3061496966797108311, guid: ceae5cc72d7d34efdb16cee6c33f6328, type: 3}
+  enemyScript: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
