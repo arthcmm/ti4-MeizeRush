@@ -12,7 +12,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField]
     private TileMapVisualizer tileMapVisualizer;
     public GameObject floorTile;
-
+    public HashSet<Vector2Int> walls;
     private GameObject[,] boardPositionsFloor;
     public HashSet<Vector2Int> roomFloors = new();
     public HashSet<Vector2Int> corridorFloors = new();
@@ -364,7 +364,7 @@ public class BoardManager : MonoBehaviour
         DrawRooms(rootSubDungeon);
         HashSet<Vector2Int> allTiles = new HashSet<Vector2Int>(roomFloors);
         allTiles.UnionWith(corridorFloors);
-        WallGenerator.CreateWalls(allTiles, tileMapVisualizer, 0);
+        walls = WallGenerator.CreateWalls(allTiles, tileMapVisualizer, 0);
     }
 }
 public static class Direction2D

@@ -8,10 +8,10 @@ using UnityEngine.UIElements.Experimental;
 public class CharMove : MonoBehaviour
 {
     [SerializeField]
-    public float speed;
+    public float speed = 3;
     // private CharacterController charController;
     private Rigidbody2D rigidbody2D;
-    private Vector2 movement;
+    public Vector2 movement;
     public Animator animator;
     private void Awake() { }
     private void Start()
