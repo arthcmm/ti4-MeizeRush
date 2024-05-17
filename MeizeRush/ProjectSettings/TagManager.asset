@@ -7,6 +7,7 @@ TagManager:
   - Trap
   - CraftMenu
   - Enemy
+  - Controller
   layers:
   - Default
   - TransparentFX
