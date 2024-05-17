@@ -867,7 +867,7 @@ GameObject:
   - component: {fileID: 1655236392}
   m_Layer: 0
   m_Name: Board
-  m_TagString: Untagged
+  m_TagString: Board
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -890,6 +890,7 @@ MonoBehaviour:
   maxRoomSize: 12
   tileMapVisualizer: {fileID: 910320379}
   floorTile: {fileID: 0}
+  scale: 10
 --- !u!4 &1655236393
 Transform:
   m_ObjectHideFlags: 0

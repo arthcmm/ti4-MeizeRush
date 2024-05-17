@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trap
   - CraftMenu
+  - Board
   layers:
   - Default
   - TransparentFX
