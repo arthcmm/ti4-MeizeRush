@@ -9,10 +9,19 @@ public class RandomPlaceEnemies : MonoBehaviour
     public int maxObjects;
     public float minDistance = 5.0f;
     public Vector3 areaSize = new Vector3(50, 50, 0);
+    public List<GameObject> enemies = new List<GameObject>();
 
     private bool isOnRange;
 
-    void Start() { InstantiateObjectsRandomly(); }
+    void Start()
+    {
+        InstantiateObjectsRandomly(); //adiciona em uma lista
+        foreach (GameObject obj in enemies)
+        {
+            obj.SetActive(true);
+            Instantiate(obj);
+        }
+    }
 
     void InstantiateObjectsRandomly()
     {
@@ -34,8 +43,12 @@ public class RandomPlaceEnemies : MonoBehaviour
             // Remove nearby positions to enforce minimum distance
             potentialPositions.RemoveAll(p => Vector3.Distance(p, position) <
                                               minDistance);
-
-            Instantiate(enemyPrefab, position, Quaternion.identity);
+            //o ideal seria dar um sort pra quantidade de inimigos e, aqui caso a distância sera ruim, recalcular até funcionar.
+            enemyPrefab.transform.position = position;
+            enemyPrefab.transform.rotation = Quaternion.identity;
+            enemyPrefab.SetActive(false);
+            enemies.Add(enemyPrefab); //adiciona tudo numa lista (confia que vai ser util)
+            //Instantiate(enemyPrefab, position, Quaternion.identity);
         }
     }
 

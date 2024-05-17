@@ -5,13 +5,14 @@ using UnityEngine;
 
 public static class WallGenerator
 {
-    public static void CreateWalls(HashSet<Vector2Int> floorPositions, TileMapVisualizer tileMapVisualizer, int size)
+    public static HashSet<Vector2Int> CreateWalls(HashSet<Vector2Int> floorPositions, TileMapVisualizer tileMapVisualizer, int size)
     {
 
-        var basicWallPositions = FindWallsInDirections(floorPositions, Direction2D.cardinalDirectionsList);
+        HashSet<Vector2Int> basicWallPositions = FindWallsInDirections(floorPositions, Direction2D.cardinalDirectionsList);
         // var cornerWallPositions = FindWallsInDirections(floorPositions, Direction2D.diagonalDirectionsList);
         CreateBasicWall(tileMapVisualizer, basicWallPositions, floorPositions, size);
         // CreateCornerWalls(tileMapVisualizer, cornerWallPositions, floorPositions);
+        return basicWallPositions;
 
     }
 
