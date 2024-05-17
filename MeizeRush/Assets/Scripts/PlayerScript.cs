@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour {
   private float staminaMax = 100;
   private float staminaRecover = 15;
   private bool tired;
+    public bool hasRuby = false;
   [SerializeField]
   CharMove cm;
   public float defaultSpeed;

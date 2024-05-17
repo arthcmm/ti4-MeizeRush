@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameControllerScript : MonoBehaviour
 {
     public int mapSize = 50;
-    private int scrap;
+    public int scrap;
+    public int score;
+    public Text gameScore;
+    public Text gameScrap;
     public Transform spawnPoint;
     public GameObject chest;
-
+    public PlayerScript player;
     public BoardManager boardManager;
     public Transform playerTransform; // Refer�ncia ao transform do jogador
     public float minDistanceToPlayer =
@@ -35,7 +39,14 @@ public class GameControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        score = Mathf.Clamp(score, 0, 9999);
+        scrap = Mathf.Clamp(scrap, 0, 999);
+        gameScore.text = score.ToString();
+        gameScrap.text = scrap.ToString();
+        if (player.hasRuby)
+        {
+            endgame();
+        }
 
     }
 
@@ -98,5 +109,10 @@ public class GameControllerScript : MonoBehaviour
             chestPositions.Add(spawnPos);
             Instantiate(chest, spawnPos, Quaternion.identity);
         }
+    }
+
+    void endgame()
+    {
+
     }
 }
