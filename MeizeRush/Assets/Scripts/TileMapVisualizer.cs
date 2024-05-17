@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -35,7 +34,7 @@ public class TileMapVisualizer : MonoBehaviour
     }
     private void PaintCorridorTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase[] tile, int pos)
     {
-        Vector2Int posAnt = new Vector2Int(0,0);
+        Vector2Int posAnt = new Vector2Int(0, 0);
         foreach (var position in positions)
         {
             if (posAnt.x > position.x || posAnt.x < position.x)

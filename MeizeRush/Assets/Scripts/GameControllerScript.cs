@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameControllerScript : MonoBehaviour
 {
     public int mapSize = 50;
+    private int scrap;
     public Transform spawnPoint;
     public GameObject chest;
 
@@ -15,6 +17,12 @@ public class GameControllerScript : MonoBehaviour
     public float minDistanceToPlayer =
         10f; // Dist�ncia m�nima entre ba� e jogador
     public float minDistanceBetweenChests = 5f; // Dist�ncia m�nima entre ba�s
+
+    public Slider sliderHealth;
+    public Slider sliderStamina;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +33,11 @@ public class GameControllerScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() { }
+    void Update()
+    {
+
+
+    }
 
     Vector3 getRandomPos()
     {
@@ -35,8 +47,17 @@ public class GameControllerScript : MonoBehaviour
     }
     void spawnPlayer()
     {
-        Vector2Int element = boardManager.roomFloors.ElementAt(Random.Range(0, boardManager.roomFloors.Count));
-        Debug.Log("RANDOM FLOOR POS:  " + element);
+        bool isWall = true;
+        Vector2Int element = new Vector2Int(0, 0);
+        while (isWall)
+        {
+            element = boardManager.roomFloors.ElementAt(Random.Range(0, boardManager.roomFloors.Count));
+            if (!boardManager.walls.Contains(element))
+            {
+                isWall = false;
+            }
+        }
+        //Debug.Log("RANDOM FLOOR POS:  " + element);
         Vector3 newPos = new Vector3(element.x, element.y, 0);
         playerTransform.position = newPos;
 
