@@ -8,6 +8,7 @@ TagManager:
   - CraftMenu
   - Enemy
   - Board
+  - Controller
   layers:
   - Default
   - TransparentFX
