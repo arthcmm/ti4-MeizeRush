@@ -185,7 +185,7 @@ public class BoardManager : MonoBehaviour {
         }
       }
 
-      Debug.Log("Corridors: ");
+      // Debug.Log("Corridors: ");
       foreach (Rect corridor in corridors) {
         // Debug.Log("corridor: " + corridor);
       }

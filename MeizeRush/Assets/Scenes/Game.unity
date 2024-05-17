@@ -177,12 +177,14 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   chest: {fileID: 5679210657532056531, guid: e689b3ea2954caf46b3de7358e46a124, type: 3}
   player: {fileID: 8504158895755420128}
-  boardManager: {fileID: 1655236392}
   playerTransform: {fileID: 563919657948159362}
   minDistanceToPlayer: 10
   minDistanceBetweenChests: 5
+  minChests: 5
+  maxChests: 10
   sliderHealth: {fileID: 1017951255}
   sliderStamina: {fileID: 392775440}
+  chests: []
 --- !u!114 &40888770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +202,7 @@ MonoBehaviour:
   maxObjects: 5
   minDistance: 5
   areaSize: {x: 50, y: 0, z: 50}
+  craftingTables: []
 --- !u!114 &40888771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2817,6 +2820,7 @@ MonoBehaviour:
   attackDamage: 35
   attackCooldown: 0.5
   attackStaminaCost: 15
+  availableTraps: 0
   hasRuby: 0
   cm: {fileID: 7797866203875994491}
   defaultSpeed: 0

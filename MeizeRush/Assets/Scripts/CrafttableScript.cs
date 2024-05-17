@@ -13,7 +13,6 @@ public class CrafttableScript : MonoBehaviour {
   private void OnTriggerEnter2D(Collider2D other) {
     if (other.gameObject == player) {
       isOnRange = true;
-      Debug.Log("Player is in range");
     }
   }
 

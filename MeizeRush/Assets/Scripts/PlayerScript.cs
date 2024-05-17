@@ -23,6 +23,7 @@ public class PlayerScript : MonoBehaviour {
   public EnemyBehaviour enemy;
   public GameObject[] targets;
   public GameControllerScript gc;
+  private float enemiesRefreshCooldown = 1.0f;
   [SerializeField]
   Rigidbody2D rb;
   // Start is called before the first frame update
@@ -39,6 +40,11 @@ public class PlayerScript : MonoBehaviour {
   void Update() {
 
     cooldownTimer -= Time.deltaTime;
+    enemiesRefreshCooldown -= Time.deltaTime;
+    if (enemiesRefreshCooldown <= 0.0f) {
+      targets = GameObject.FindGameObjectsWithTag("Enemy").ToArray();
+      enemiesRefreshCooldown = 1.0f;
+    }
     gc.sliderHealth.value = life;
     // Verifica se o botão esquerdo do mouse foi pressionado e o cooldown já
     // passou
@@ -89,10 +95,10 @@ public class PlayerScript : MonoBehaviour {
   }
 
   void Attack() {
-    // print("attack!");
+    print("attack!");
     if (Vector2.Distance(this.transform.position,
                          FindNearestEnemy().transform.position) <= 2) {
-      // print("gottem!");
+      print("gottem!");
       enemy.health -= attackDamage;
     }
     // tocar a animação

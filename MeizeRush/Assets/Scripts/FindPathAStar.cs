@@ -79,7 +79,7 @@ public class FindPathAStar : MonoBehaviour {
   bool hasStarted = false;
   private GameObject player;
   private bool isRunning = false;
-  private float cooldownTimer = 0.5f;
+  private float cooldownTimer = 2.5f;
   private List<MapLocation> locations = new List<MapLocation>();
 
   List<PathMarker> open = new List<PathMarker>();
