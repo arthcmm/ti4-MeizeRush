@@ -20,7 +20,7 @@ public class PlaceTrap : MonoBehaviour
     {
 
         Vector3 positionToPlace = playerTransform.position;
-        positionToPlace.y = positionToPlace.y - (float)0.01;
+        positionToPlace.z = positionToPlace.z + (float)0.01; //deixa a trap atraz do player
 
         // Define the size of the check area (this should match or be slightly larger than the object's size)
         Vector3 checkSize = new Vector3((float)1, (float)1, (float)1);  // Adjust this size according to your sphere's size
