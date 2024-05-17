@@ -11,7 +11,7 @@ public class BoardManager : MonoBehaviour {
   [SerializeField]
   private TileMapVisualizer tileMapVisualizer;
   public GameObject floorTile;
-    public HashSet<Vector2Int> walls;
+  public HashSet<Vector2Int> walls;
   private GameObject[,] boardPositionsFloor;
   public HashSet<Vector2Int> roomFloors = new();
   public HashSet<Vector2Int> corridorFloors = new();
@@ -281,37 +281,46 @@ public class BoardManager : MonoBehaviour {
       return;
     }
 
-        getAllCorridors(subDungeon.left);
-        getAllCorridors(subDungeon.right);
-        foreach (Rect corridor in subDungeon.corridors)
-        {
-            for (int i = (int)corridor.x; i < corridor.xMax; i++)
-            {
-                for (int j = (int)corridor.y; j < corridor.yMax; j++)
-                {
-                    if (boardPositionsFloor[i, j] == null)
-                    {
-                        corridorFloors.Add(new Vector2Int(i, j));
-                        // GameObject instance = Instantiate(corridorTile, new Vector3(i, j, 0f), Quaternion.identity) as GameObject;
-                        // instance.transform.SetParent(transform);
-                        // boardPositionsFloor[i, j] = instance;
-                    }
-                }
-            }
+    getAllCorridors(subDungeon.left);
+    getAllCorridors(subDungeon.right);
+    foreach (Rect corridor in subDungeon.corridors) {
+      for (int i = (int)corridor.x; i < corridor.xMax; i++) {
+        for (int j = (int)corridor.y; j < corridor.yMax; j++) {
+          if (boardPositionsFloor[i, j] == null) {
+            corridorFloors.Add(new Vector2Int(i, j));
+            // GameObject instance = Instantiate(corridorTile, new Vector3(i, j,
+            // 0f), Quaternion.identity) as GameObject;
+            // instance.transform.SetParent(transform);
+            // boardPositionsFloor[i, j] = instance;
+          }
         }
+      }
     }
-    void Start()
-    {
-        SubDungeon rootSubDungeon = new SubDungeon(new Rect(0, 0, boardRows, boardColumns));
-        CreateBSP(rootSubDungeon);
-        rootSubDungeon.CreateRoom();
-        boardPositionsFloor = new GameObject[boardRows, boardColumns];
-        DrawCorridors(rootSubDungeon);
-        DrawRooms(rootSubDungeon);
-        HashSet<Vector2Int> allTiles = new HashSet<Vector2Int>(roomFloors);
-        allTiles.UnionWith(corridorFloors);
-        walls = WallGenerator.CreateWalls(allTiles, tileMapVisualizer, 0);
+  }
+  void Start() {
+    SubDungeon rootSubDungeon =
+        new SubDungeon(new Rect(0, 0, boardRows, boardColumns));
+    CreateBSP(rootSubDungeon);
+    rootSubDungeon.CreateRoom();
+    boardPositionsFloor = new GameObject[boardRows, boardColumns];
+    DrawCorridors(rootSubDungeon);
+    DrawRooms(rootSubDungeon);
+    HashSet<Vector2Int> allTiles = new HashSet<Vector2Int>(roomFloors);
+    allTiles.UnionWith(corridorFloors);
+    walls = WallGenerator.CreateWalls(allTiles, tileMapVisualizer, 0);
+    map = new byte[boardRows, boardColumns];
+    for (int i = 0; i < boardRows - 1; i++) {
+      for (int j = 0; j < boardColumns - 1; j++) {
+        map[i, j] = 1;
+      }
     }
+    foreach (Vector2Int p in corridorFloors) {
+      map[p.x, p.y] = 0;
+    }
+    foreach (Vector2Int p in roomFloors) {
+      map[p.x, p.y] = 0;
+    }
+  }
 }
 public static class Direction2D {
   public static List<Vector2Int> cardinalDirectionsList = new List<Vector2Int> {

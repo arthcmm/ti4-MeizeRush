@@ -114,8 +114,6 @@ public class FindPathAStar : MonoBehaviour {
 
     open.Add(startNode);
     lastPos = startNode;
-    Debug.Log("Start: " + startNode.location.x + " " + startNode.location.y);
-    Debug.Log("Goal: " + goalNode.location.x + " " + goalNode.location.y);
   }
 
   void Search(PathMarker thisNode) {
@@ -123,7 +121,6 @@ public class FindPathAStar : MonoBehaviour {
     if (thisNode.Equals(goalNode)) {
 
       done = true;
-      Debug.Log("DONE!");
       return;
     }
 
@@ -153,7 +150,6 @@ public class FindPathAStar : MonoBehaviour {
     }
     open = open.OrderBy(p => p.F).ThenBy(n => n.H).ToList<PathMarker>();
     PathMarker pm = (PathMarker)open.ElementAt(0);
-    // Debug.Log("Current: " + pm.location.x + " " + pm.location.y);
     closed.Add(pm);
 
     open.RemoveAt(0);
@@ -238,7 +234,6 @@ public class FindPathAStar : MonoBehaviour {
     if (cooldownTimer <= 0.0f && hasStarted) {
       isRunning = false;
       BeginSearch();
-      // Debug.Log("Searching...");
       cooldownTimer = 1.0f;
     }
 
