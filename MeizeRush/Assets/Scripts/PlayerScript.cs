@@ -16,8 +16,8 @@ public class PlayerScript : MonoBehaviour
     private float staminaRecover = 15;
     private bool tired;
     [SerializeField] CharMove cm;
-    private float defaultSpeed;
-    public float sprintSpeed = 5;
+    public float defaultSpeed;
+    public float sprintSpeed;
     public EnemyBehaviour enemy;
     public GameObject[] targets;
     public GameControllerScript gc;
@@ -28,7 +28,9 @@ public class PlayerScript : MonoBehaviour
         Time.timeScale = 1; //tempo do jogo - passar para o gamecontroller depois
         targets = GameObject.FindGameObjectsWithTag("Enemy").ToArray();
         tired = false;
-        defaultSpeed = cm.speed;
+        defaultSpeed = 7;
+        sprintSpeed = 12;
+        cm.speed = defaultSpeed;
     }
 
     // Update is called once per frame
@@ -44,7 +46,7 @@ public class PlayerScript : MonoBehaviour
             // Reinicia o contador de cooldown
             cooldownTimer = attackCooldown;
         }
-        print(stamina);
+        // print(stamina);
         gc.sliderStamina.value = stamina;
         if (Input.GetKey(KeyCode.LeftShift) && stamina > 0) //corre
         {
@@ -98,7 +100,7 @@ public class PlayerScript : MonoBehaviour
         //print("attack!");
         if (Vector2.Distance(this.transform.position, FindNearestEnemy().transform.position) <= 2)
         {
-            print("gottem!");
+            // print("gottem!");
             enemy.health -= attackDamage;
         }
         //tocar a animação
