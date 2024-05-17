@@ -69,6 +69,7 @@ public class FindPathAStar : MonoBehaviour {
   // public GameObject start;
   // public GameObject end;
   // public GameObject pathP;
+  public float clockTime;
 
   PathMarker startNode;
   PathMarker goalNode;
@@ -78,7 +79,7 @@ public class FindPathAStar : MonoBehaviour {
   bool hasStarted = false;
   private GameObject player;
   private bool isRunning = false;
-  private float cooldownTimer = 1.0f;
+  private float cooldownTimer = 0.5f;
   private List<MapLocation> locations = new List<MapLocation>();
 
   List<PathMarker> open = new List<PathMarker>();
@@ -192,6 +193,7 @@ public class FindPathAStar : MonoBehaviour {
   }
 
   void Start() {
+    cooldownTimer = clockTime;
     maze =
         GameObject.FindGameObjectWithTag("Board").GetComponent<BoardManager>();
     player = GameObject.FindGameObjectWithTag("Player");
@@ -234,7 +236,7 @@ public class FindPathAStar : MonoBehaviour {
     if (cooldownTimer <= 0.0f && hasStarted) {
       isRunning = false;
       BeginSearch();
-      cooldownTimer = 1.0f;
+      cooldownTimer = clockTime;
     }
 
     if (hasStarted && !isRunning) {
