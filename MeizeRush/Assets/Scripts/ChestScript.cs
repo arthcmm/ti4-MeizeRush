@@ -5,6 +5,10 @@ using UnityEngine;
 public class ChestScript : MonoBehaviour
 {
     private Transform player;
+    [SerializeField] int gemScore = 100;
+    [SerializeField] int scrapFound = 30;
+    private GameControllerScript gc;
+    public PlayerScript ps;
     public float distancia; //1.2 parece um bom valor
     private bool aberto;
     public Sprite openChest;
@@ -14,6 +18,8 @@ public class ChestScript : MonoBehaviour
     {
         aberto = false;
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        gc = GameObject.FindGameObjectWithTag("Controller").GetComponent<GameControllerScript>();
     }
 
     // Update is called once per frame
@@ -36,16 +42,19 @@ public class ChestScript : MonoBehaviour
                         case 3:
                         case 4:
                             Debug.Log("Você ganhou uma GEMA!");
+                            gc.score += gemScore;
                             // aumenta o score do jogador
                             break;
                         case 5:
                             Debug.Log("Você ganhou um UPGRADE DE DANO!");
+                            ps.attackDamage += 10;
                             // aumenta o dano do chicote
                             break;
                         case 6:
                         case 7:
                         case 8:
                             Debug.Log("Você ganhou MATERIAIS!");
+                            gc.scrap += scrapFound;
                             // aumenta o contador de materiais
                             break;
                         case 9:
