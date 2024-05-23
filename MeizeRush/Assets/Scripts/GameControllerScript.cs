@@ -35,7 +35,7 @@ public class GameControllerScript : MonoBehaviour {
         GameObject.FindGameObjectWithTag("Board").GetComponent<BoardManager>();
     // int chestNumber = Random.Range(2, 6); // valores aleatorios
     // spawnChests(chestNumber);
-    spawnPlayer();
+    // spawnPlayer();
   }
 
   // Update is called once per frame
@@ -50,6 +50,7 @@ public class GameControllerScript : MonoBehaviour {
 
     cooldown -= Time.deltaTime;
     if (cooldown <= 0.0f && !spawned) {
+      spawnPlayer();
       InstantiateObjectsRandomly(); // adiciona em uma lista
       foreach (GameObject obj in chests) {
         obj.SetActive(true);
@@ -60,19 +61,53 @@ public class GameControllerScript : MonoBehaviour {
     }
   }
 
-  void spawnPlayer() {
-    bool isWall = true;
-    Vector2Int element = new Vector2Int(0, 0);
-    while (isWall) {
-      element = boardManager.roomFloors.ElementAt(
-          Random.Range(0, boardManager.roomFloors.Count));
-      if (!boardManager.walls.Contains(element)) {
-        isWall = false;
+  private Vector3 getRandomPosition() {
+    byte[,] placedMatrix =
+        new byte[boardManager.boardRows, boardManager.boardColumns];
+
+    for (int i = 0; i < boardManager.boardRows; i++) {
+      for (int j = 0; j < boardManager.boardColumns; j++) {
+        placedMatrix[i, j] = boardManager.map[i, j];
       }
     }
-    // Debug.Log("RANDOM FLOOR POS:  " + element);
-    Vector3 newPos = new Vector3(element.x, element.y, 0);
-    playerTransform.position = newPos;
+
+    int indexX = 0;
+    int indexY = 0;
+    do {
+      indexX = Random.Range(1, boardManager.boardRows - 2);
+      indexY = Random.Range(1, boardManager.boardColumns - 2);
+    } while (isCloseToWall(placedMatrix, indexX, indexY));
+
+    Vector3 position = new Vector3(indexX, indexY, 0);
+    placedMatrix[indexX, indexY] = 1;
+
+    return position;
+  }
+
+  private bool isCloseToWall(byte[,] placedMatrix, int x, int y) {
+    if (placedMatrix[x, y] >= 1 || placedMatrix[x + 1, y] >= 1 ||
+        placedMatrix[x, y + 1] >= 1 || placedMatrix[x + 1, y + 1] >= 1) {
+      return true;
+    } else if (placedMatrix[x - 1, y] >= 1 || placedMatrix[x, y - 1] >= 1 ||
+               placedMatrix[x - 1, y - 1] >= 1) {
+      return true;
+    }
+    return false;
+  }
+
+  void spawnPlayer() {
+    // bool isWall = true;
+    // Vector2Int element = new Vector2Int(0, 0);
+    // while (isWall) {
+    //   element = boardManager.roomFloors.ElementAt(
+    //       Random.Range(0, boardManager.roomFloors.Count));
+    //   if (!boardManager.walls.Contains(element)) {
+    //     isWall = false;
+    //   }
+    // }
+    // // Debug.Log("RANDOM FLOOR POS:  " + element);
+    // Vector3 newPos = new Vector3(element.x, element.y, 0);
+    playerTransform.position = getRandomPosition();
   }
 
   void InstantiateObjectsRandomly() {

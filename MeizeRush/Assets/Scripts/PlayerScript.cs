@@ -95,10 +95,8 @@ public class PlayerScript : MonoBehaviour {
   }
 
   void Attack() {
-    print("attack!");
     if (Vector2.Distance(this.transform.position,
                          FindNearestEnemy().transform.position) <= 2) {
-      print("gottem!");
       enemy.health -= attackDamage;
     }
     // tocar a animação
