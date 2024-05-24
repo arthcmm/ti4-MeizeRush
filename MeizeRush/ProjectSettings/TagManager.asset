@@ -10,6 +10,9 @@ TagManager:
   - Board
   - Controller
   - Ruby
+  - AttackArea
+  - EnemyHitbox
+  - EnemyA*
   layers:
   - Default
   - TransparentFX

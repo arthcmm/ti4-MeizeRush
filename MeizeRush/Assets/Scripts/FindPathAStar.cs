@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class MapLocation {
+public class MapLocation
+{
   public int x;
   public int y;
 
-  public MapLocation(int _x, int _z) {
+  public MapLocation(int _x, int _z)
+  {
     x = _x;
     y = _z;
   }
@@ -17,7 +19,8 @@ public class MapLocation {
   public static MapLocation operator +(MapLocation a, MapLocation b) =>
       new MapLocation(a.x + b.x, a.y + b.y);
 
-  public override bool Equals(object obj) {
+  public override bool Equals(object obj)
+  {
     if ((obj == null) || !this.GetType().Equals(obj.GetType()))
       return false;
     else
@@ -27,14 +30,16 @@ public class MapLocation {
   public override int GetHashCode() { return 0; }
 }
 
-public class PathMarker {
+public class PathMarker
+{
 
   public MapLocation location;
   public float G, H, F;
   // public GameObject marker;
   public PathMarker parent;
 
-  public PathMarker(MapLocation l, float g, float h, float f, PathMarker p) {
+  public PathMarker(MapLocation l, float g, float h, float f, PathMarker p)
+  {
 
     location = l;
     G = g;
@@ -44,7 +49,8 @@ public class PathMarker {
     parent = p;
   }
 
-  public override bool Equals(object obj) {
+  public override bool Equals(object obj)
+  {
 
     if ((obj == null) || !this.GetType().Equals(obj.GetType()))
       return false;
@@ -55,7 +61,8 @@ public class PathMarker {
   public override int GetHashCode() { return 0; }
 }
 
-public class FindPathAStar : MonoBehaviour {
+public class FindPathAStar : MonoBehaviour
+{
 
   public List<MapLocation> directions = new List<MapLocation>() {
     new MapLocation(1, 0),  new MapLocation(1, 1),   new MapLocation(0, 1),
@@ -95,7 +102,8 @@ public class FindPathAStar : MonoBehaviour {
   //     Destroy(m);
   // }
 
-  void BeginSearch() {
+  void BeginSearch()
+  {
 
     done = false;
     // RemoveAllMarkers();
@@ -117,15 +125,18 @@ public class FindPathAStar : MonoBehaviour {
     lastPos = startNode;
   }
 
-  void Search(PathMarker thisNode) {
+  void Search(PathMarker thisNode)
+  {
 
-    if (thisNode.Equals(goalNode)) {
+    if (thisNode.Equals(goalNode))
+    {
 
       done = true;
       return;
     }
 
-    foreach (MapLocation dir in directions) {
+    foreach (MapLocation dir in directions)
+    {
 
       MapLocation neighbour = dir + thisNode.location;
 
@@ -144,7 +155,8 @@ public class FindPathAStar : MonoBehaviour {
           Vector2.Distance(neighbour.ToVector(), goalNode.location.ToVector());
       float f = g + h;
 
-      if (!UpdateMarker(neighbour, g, h, f, thisNode)) {
+      if (!UpdateMarker(neighbour, g, h, f, thisNode))
+      {
 
         open.Add(new PathMarker(neighbour, g, h, f, thisNode));
       }
@@ -159,11 +171,14 @@ public class FindPathAStar : MonoBehaviour {
   }
 
   bool UpdateMarker(MapLocation pos, float g, float h, float f,
-                    PathMarker prt) {
+                    PathMarker prt)
+  {
 
-    foreach (PathMarker p in open) {
+    foreach (PathMarker p in open)
+    {
 
-      if (p.location.Equals(pos)) {
+      if (p.location.Equals(pos))
+      {
 
         p.G = g;
         p.H = h;
@@ -175,9 +190,11 @@ public class FindPathAStar : MonoBehaviour {
     return false;
   }
 
-  bool IsClosed(MapLocation marker) {
+  bool IsClosed(MapLocation marker)
+  {
 
-    foreach (PathMarker p in closed) {
+    foreach (PathMarker p in closed)
+    {
 
       if (p.location.Equals(marker))
         return true;
@@ -185,23 +202,28 @@ public class FindPathAStar : MonoBehaviour {
     return false;
   }
 
-  void StartSearch() {
+  void StartSearch()
+  {
     isRunning = true;
     while (!done)
       Search(lastPos);
     GetPath();
   }
 
-  void Start() {
+  void Start()
+  {
     cooldownTimer = clockTime;
     maze =
         GameObject.FindGameObjectWithTag("Board").GetComponent<BoardManager>();
     player = GameObject.FindGameObjectWithTag("Player");
     locations.Clear();
-    for (int y = 1; y < maze.boardColumns - 1; ++y) {
-      for (int x = 1; x < maze.boardRows - 1; ++x) {
+    for (int y = 1; y < maze.boardColumns - 1; ++y)
+    {
+      for (int x = 1; x < maze.boardRows - 1; ++x)
+      {
 
-        if (maze.map[x, y] != 1) {
+        if (maze.map[x, y] != 1)
+        {
 
           locations.Add(new MapLocation(x, y));
         }
@@ -209,45 +231,74 @@ public class FindPathAStar : MonoBehaviour {
     }
   }
 
-  private void OnTriggerEnter2D(Collider2D other) {
-    if (other.gameObject == player) {
+  private void OnTriggerEnter2D(Collider2D other)
+  {
+
+    if (other.gameObject == player)
+    {
       hasStarted = true;
     }
   }
-  private void OnTriggerExit2D(Collider2D other) {
-    if (other.gameObject == player) {
-      hasStarted = false;
+  // private void OnCollisionExit2D(Collision2D other)
+  // {
+  //   if (other.GetType() == typeof(Collider2D))
+  //   {
+  //     if (other.gameObject == player)
+  //     {
+  //       hasStarted = false;
+  //     }
+
+  //   }
+  // }
+
+  private void OnTriggerExit2D(Collider2D other)
+  {
+    if (other.CompareTag("EnemyA*"))
+    {
+      if (other.gameObject == player)
+      {
+        hasStarted = false;
+      }
     }
   }
 
-  void GetPath() {
+  void GetPath()
+  {
     enemyPath.Clear();
     PathMarker begin = lastPos;
-    while (!startNode.Equals(begin) && begin != null) {
+    while (!startNode.Equals(begin) && begin != null)
+    {
       enemyPath.Add(new Vector3(begin.location.x, begin.location.y, 0));
       begin = begin.parent;
     }
     pathIndex = enemyPath.Count - 1;
   }
 
-  void Update() {
+  void Update()
+  {
 
     cooldownTimer -= Time.deltaTime;
-    if (cooldownTimer <= 0.0f && hasStarted) {
+    if (cooldownTimer <= 0.0f && hasStarted)
+    {
       isRunning = false;
       BeginSearch();
       cooldownTimer = clockTime;
     }
 
-    if (hasStarted && !isRunning) {
+    if (hasStarted && !isRunning)
+    {
       StartSearch();
-    } else if (hasStarted) {
+    }
+    else if (hasStarted)
+    {
 
-      if (pathIndex >= 0) {
+      if (pathIndex >= 0)
+      {
         transform.position =
             Vector3.MoveTowards(transform.position, enemyPath[pathIndex],
                                 moveSpeed * Time.deltaTime);
-        if (transform.position == enemyPath[pathIndex]) {
+        if (transform.position == enemyPath[pathIndex])
+        {
           pathIndex -= 1;
         }
       }
