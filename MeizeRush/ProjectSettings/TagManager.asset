@@ -12,6 +12,7 @@ TagManager:
   - Ruby
   - AttackArea
   - EnemyHitbox
+  - EnemyA*
   layers:
   - Default
   - TransparentFX
