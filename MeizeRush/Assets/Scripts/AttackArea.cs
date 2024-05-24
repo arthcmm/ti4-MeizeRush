@@ -20,12 +20,18 @@ public class AttackArea : MonoBehaviour
     {
         if (collider.CompareTag("EnemyHitbox"))
         {
-            // GameObject obj = GameObject.Find("Enemy");
-            
-            EnemyBehaviour enemy = collider.GetComponent<EnemyBehaviour>();
-            enemy.health -= damage;
-            Debug.Log("hitou o inimigo: ");
+            // Tenta obter o componente EnemyBehaviour do próprio objeto ou de seus pais
+            EnemyBehaviour enemy = collider.GetComponentInParent<EnemyBehaviour>();
 
+            if (enemy != null)
+            {
+                enemy.health -= damage;
+                Debug.Log("Hitou o inimigo: " + enemy.name + ", nova vida: " + enemy.health);
+            }
+            else
+            {
+                Debug.LogWarning("EnemyBehaviour não encontrado no objeto ou seus pais com a tag 'EnemyHitbox'. Objeto: " + collider.gameObject.name);
+            }
         }
     }
     public void Attack(bool attack)
