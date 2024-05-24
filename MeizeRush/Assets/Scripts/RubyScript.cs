@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RubyScript : MonoBehaviour {
+public class RubyScript : MonoBehaviour
+{
   private PlayerScript playerScript;
   private GameObject player;
   public GameControllerScript gc;
@@ -13,34 +14,39 @@ public class RubyScript : MonoBehaviour {
   public float floatAmplitude = 0.5f;
   public float floatFrequency = 1f;
   public Vector2 spawnAreaMin = new Vector2(
-      -35, -35); // Defina valores padrão se não for configurar via Inspector
+      -35, -35); // Defina valores padrï¿½o se nï¿½o for configurar via Inspector
   public Vector2 spawnAreaMax = new Vector2(
-      35, 35); // Defina valores padrão se não for configurar via Inspector
+      35, 35); // Defina valores padrï¿½o se nï¿½o for configurar via Inspector
   private BoardManager boardManager;
   private float spawnCooldown = 1.0f;
   private bool spawned = false;
 
   // Start is called before the first frame update
-  void Start() {
+  void Start()
+  {
     boardManager =
         GameObject.FindGameObjectWithTag("Board").GetComponent<BoardManager>();
     player = GameObject.FindGameObjectWithTag("Player");
     playerScript = player.GetComponent<PlayerScript>();
   }
 
-  private Vector3 getRandomPosition() {
+  private Vector3 getRandomPosition()
+  {
     byte[,] placedMatrix =
         new byte[boardManager.boardRows, boardManager.boardColumns];
 
-    for (int i = 0; i < boardManager.boardRows; i++) {
-      for (int j = 0; j < boardManager.boardColumns; j++) {
+    for (int i = 0; i < boardManager.boardRows; i++)
+    {
+      for (int j = 0; j < boardManager.boardColumns; j++)
+      {
         placedMatrix[i, j] = boardManager.map[i, j];
       }
     }
 
     int indexX = 0;
     int indexY = 0;
-    do {
+    do
+    {
       indexX = Random.Range(0, boardManager.boardRows - 1);
       indexY = Random.Range(0, boardManager.boardColumns - 1);
     } while (placedMatrix[indexX, indexY] >= 1);
@@ -50,14 +56,15 @@ public class RubyScript : MonoBehaviour {
     placedMatrix[indexX, indexY] = 1;
     return position;
   }
-  void SpawnPedestalAndRuby() {
-    // Define a posição de spawn do pedestal dentro da área de spawn
+  void SpawnPedestalAndRuby()
+  {
+    // Define a posiï¿½ï¿½o de spawn do pedestal dentro da ï¿½rea de spawn
     // Vector2 spawnPosition = new Vector2(
     //     Random.Range(spawnAreaMin.x, spawnAreaMax.x),
     //     Random.Range(spawnAreaMin.y, spawnAreaMax.y)
     // );
 
-    // Instancia o pedestal na posição de spawn
+    // Instancia o pedestal na posiï¿½ï¿½o de spawn
     pedestal =
         Instantiate(pedestalPrefab, getRandomPosition(), Quaternion.identity);
 
@@ -65,45 +72,66 @@ public class RubyScript : MonoBehaviour {
     ruby = Instantiate(rubyPrefab, pedestal.transform);
     ruby.transform.localPosition = new Vector3(0, 1, 0);
 
-    // Adiciona o script de flutuação ao rubi e configura os parâmetros
+    // Adiciona o script de flutuaï¿½ï¿½o ao rubi e configura os parï¿½metros
     RubyFloat rubyFloat = ruby.AddComponent<RubyFloat>();
     rubyFloat.amplitude = floatAmplitude;
     rubyFloat.frequency = floatFrequency;
   }
 
   // Update is called once per frame
-  void Update() {
+  void Update()
+  {
     spawnCooldown -= Time.deltaTime;
-    if (spawnCooldown <= 0.0f && !spawned) {
+    if (spawnCooldown <= 0.0f && !spawned)
+    {
       SpawnPedestalAndRuby();
       spawned = true;
       spawnCooldown = 2000.0f;
     }
     if (Vector3.Distance(player.transform.position, ruby.transform.position) <
             2 &&
-        ruby.activeSelf) {
+        ruby.activeSelf)
+    {
       Debug.Log("Pressione E para pegar o rubi");
-      if (Input.GetKeyDown(KeyCode.E)) {
+      if (Input.GetKeyDown(KeyCode.E))
+      {
         playerScript.hasRuby = true;
         gc.score += 5000;
-        // Adicione aqui o código para tocar um som, se necessário
+        // Adicione aqui o cï¿½digo para tocar um som, se necessï¿½rio
         ruby.SetActive(false);
+        gerarSaida();
       }
     }
   }
+
+  private void gerarSaida()
+  {
+  HashSet<Vector2Int> positions = boardManager.walls;
+int randomIndex = Random.Range(0, positions.Count);
+
+// Convertendo o HashSet para uma lista para poder acessar o elemento pelo Ã­ndice
+List<Vector2Int> positionsList = new List<Vector2Int>(positions);
+Vector2Int randomPosition = positionsList[randomIndex];
+
+// Chamada para pintar a posiÃ§Ã£o aleatÃ³ria no floorTileMap com tamanho 7
+boardManager.tileMapVisualizer.PaintFloorTiles(new List<Vector2Int> { randomPosition }, 7);
+  }
 }
 
-public class RubyFloat : MonoBehaviour {
+public class RubyFloat : MonoBehaviour
+{
   private Vector3 startPos;
-  public float amplitude = 0.2f; // Amplitude da flutuação
-  public float frequency = 1f;   // Frequência da flutuação
+  public float amplitude = 0.2f; // Amplitude da flutuaï¿½ï¿½o
+  public float frequency = 1f;   // Frequï¿½ncia da flutuaï¿½ï¿½o
 
-  void Start() {
-    startPos = transform.localPosition; // Posição inicial do rubi
+  void Start()
+  {
+    startPos = transform.localPosition; // Posiï¿½ï¿½o inicial do rubi
   }
 
-  void Update() {
-    // Calcular nova posição do rubi
+  void Update()
+  {
+    // Calcular nova posiï¿½ï¿½o do rubi
     float newY = startPos.y + amplitude * Mathf.Sin(Time.time * frequency);
     transform.localPosition = new Vector3(startPos.x, newY, startPos.z);
   }
