@@ -9,12 +9,14 @@ public class TileMapVisualizer : MonoBehaviour
 {
 
     [SerializeField]
-    private Tilemap floorTileMap, wallTileMap;
+    public Tilemap floorTileMap, wallTileMap;
 
     [SerializeField]
     private TileBase[] floorTile = new TileBase[8];
     public TileBase[] corridorTile = new TileBase[2];
     public TileBase[] wallLeftTile = new TileBase[1];
+
+    public object Tilemap { get; internal set; }
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions, int size)
     {
@@ -53,7 +55,6 @@ public class TileMapVisualizer : MonoBehaviour
 
     private void PaintSingeTile(Tilemap tilemap, TileBase[] tile, Vector2Int position, int size)
     {
-
         var tilePosition = tilemap.WorldToCell((Vector3Int)position);
         tilemap.SetTile(tilePosition, tile[UnityEngine.Random.Range(0, 70 % (size + 1))]);
     }

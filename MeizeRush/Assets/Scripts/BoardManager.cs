@@ -9,7 +9,7 @@ public class BoardManager : MonoBehaviour {
   public int boardRows, boardColumns;
   public int minRoomSize, maxRoomSize;
   [SerializeField]
-  private TileMapVisualizer tileMapVisualizer;
+  public TileMapVisualizer tileMapVisualizer;
   public GameObject floorTile;
   public HashSet<Vector2Int> walls;
   private GameObject[,] boardPositionsFloor;
