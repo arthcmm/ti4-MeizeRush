@@ -28,6 +28,17 @@ public class RubyScript : MonoBehaviour {
     playerScript = player.GetComponent<PlayerScript>();
   }
 
+  private bool isCloseToWall(byte[,] placedMatrix, int x, int y) {
+    if (placedMatrix[x, y] >= 1 || placedMatrix[x + 1, y] >= 1 ||
+        placedMatrix[x, y + 1] >= 1 || placedMatrix[x + 1, y + 1] >= 1) {
+      return true;
+    } else if (placedMatrix[x - 1, y] >= 1 || placedMatrix[x, y - 1] >= 1 ||
+               placedMatrix[x - 1, y - 1] >= 1) {
+      return true;
+    }
+    return false;
+  }
+
   private Vector3 getRandomPosition() {
     byte[,] placedMatrix =
         new byte[boardManager.boardRows, boardManager.boardColumns];
@@ -43,7 +54,7 @@ public class RubyScript : MonoBehaviour {
     do {
       indexX = Random.Range(0, boardManager.boardRows - 1);
       indexY = Random.Range(0, boardManager.boardColumns - 1);
-    } while (placedMatrix[indexX, indexY] >= 1);
+    } while (isCloseToWall(placedMatrix, indexX, indexY));
 
     Vector3 position = new Vector3(indexX, indexY, 0);
     Debug.Log("RANDOM RUBY POS:  " + position);
