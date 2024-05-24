@@ -26,7 +26,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     // enemyPos = this.transform; // atualiza a posicao desse inimigo, eu acho
     cooldownTimer -= Time.deltaTime;
-    if (health < 0)
+    if (health <= 0)
     {
       thisEnemy.SetActive(false);
       health = 100; // reseta para respawnar o inimigo depois
