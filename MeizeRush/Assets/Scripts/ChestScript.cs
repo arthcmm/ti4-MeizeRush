@@ -41,30 +41,31 @@ public class ChestScript : MonoBehaviour
                         case 2:
                         case 3:
                         case 4:
-                            Debug.Log("Você ganhou uma GEMA!");
+                            Debug.Log("Vocï¿½ ganhou uma GEMA!");
                             gc.score += gemScore;
                             // aumenta o score do jogador
                             break;
                         case 5:
-                            Debug.Log("Você ganhou um UPGRADE DE DANO!");
+                            Debug.Log("Vocï¿½ ganhou um UPGRADE DE DANO!");
                             ps.attackDamage += 10;
                             // aumenta o dano do chicote
                             break;
                         case 6:
                         case 7:
                         case 8:
-                            Debug.Log("Você ganhou MATERIAIS!");
+                            Debug.Log("Vocï¿½ ganhou MATERIAIS!");
                             gc.scrap += scrapFound;
                             // aumenta o contador de materiais
                             break;
                         case 9:
-                            Debug.Log("Você ganhou um PET NOVO!");
-                            // função que pergunta se o player deseja trocar o pet antigo pelo novo, se sim, faz a troca
+                            Debug.Log("Vocï¿½ ganhou um PET NOVO!");
+                            // funï¿½ï¿½o que pergunta se o player deseja trocar o pet antigo pelo novo, se sim, faz a troca
                             break;
                         default:
                             //etc
                             break;
                     }
+                    gameObject.SetActive(false);
                 }
                 else Debug.Log("Bau ja aberto");
             }

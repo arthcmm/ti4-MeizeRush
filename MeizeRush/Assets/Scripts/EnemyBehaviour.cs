@@ -37,7 +37,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
       if (cooldownTimer <= 0.0f)
       {
-        playerScript.life -= 15;
+        playerScript.life -= 5;
         // Debug.Log("Player hit: " + playerScript.life);
         cooldownTimer = 1.0f;
       }
