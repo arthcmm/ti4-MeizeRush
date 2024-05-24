@@ -124,6 +124,7 @@ public class PlayerScript : MonoBehaviour
   {
     attacking = true;
     attackArea.gameObject.SetActive(attacking);
+
   }
 
   // void Attack() {
