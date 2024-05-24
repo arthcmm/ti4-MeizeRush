@@ -1727,9 +1727,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.11, y: 0}
-      - {x: 0.5, y: 0.54}
-      - {x: 0.5, y: -0.47}
+    - - {x: 0, y: 0.23}
+      - {x: 0.84, y: 0.5}
+      - {x: 0.86, y: -0.47}
+      - {x: 0, y: -0.3}
   m_UseDelaunayMesh: 0
 --- !u!114 &1512470021
 MonoBehaviour:
@@ -1968,7 +1969,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1840113219
 Transform:
   m_ObjectHideFlags: 0
@@ -2265,7 +2266,7 @@ Camera:
   far clip plane: 1000
   field of view: 80.6
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2671,7 +2672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9090350691f9624b907678626c42cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 10000
+  life: 150
   attackDamage: 35
   attackCooldown: 0.5
   attackArea: {fileID: 1304271716}
