@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
     Vector2 pointerPosition { get; set; }
     public Canvas canvas;
     public float life = 100;
-    public float attackDamage = 35;     // dano de ataque do jogador
+    public float attackDamage = 25;     // dano de ataque do jogador
     public float attackCooldown = 0.5f;
     public AttackArea attackArea;
     private bool attacking = false;
@@ -114,13 +114,6 @@ public class PlayerScript : MonoBehaviour
                 gc.sliderStamina.value = stamina;
                 tired = false;
             }
-        }
-
-        if (life <= 0) // para o jogo quando o jogador perde, passar essa
-                       // verificação para o gamecontroller depois
-        {
-            canvas.gameObject.SetActive(true);
-            Time.timeScale = 0;
         }
     }
     private void Attack()

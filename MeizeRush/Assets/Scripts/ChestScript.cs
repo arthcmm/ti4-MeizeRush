@@ -43,11 +43,11 @@ public class ChestScript : MonoBehaviour
                         case 4:
                             Debug.Log("Voc� ganhou uma GEMA!");
                             gc.score += gemScore;
-                            // aumenta o score do jogador
+                            // texto na tela
                             break;
                         case 5:
                             Debug.Log("Voc� ganhou um UPGRADE DE DANO!");
-                            ps.attackDamage += 10;
+                            ps.attackDamage += 5;
                             // aumenta o dano do chicote
                             break;
                         case 6:

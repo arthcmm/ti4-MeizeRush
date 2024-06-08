@@ -7,7 +7,7 @@ using UnityEngine;
 public class AttackArea : MonoBehaviour
 {
     // Start is called before the first frame update
-    private int damage = 10;
+    public PlayerScript player; //puxo o dano daqui
     public EnemyBehaviour enemy;
     public Animator animator;
     public Vector2 pointerPosition { get; set; }
@@ -25,7 +25,7 @@ public class AttackArea : MonoBehaviour
 
             if (enemy != null)
             {
-                enemy.health -= damage;
+                enemy.health -= player.attackDamage;
                 Debug.Log("Hitou o inimigo: " + enemy.name + ", nova vida: " + enemy.health);
             }
             else

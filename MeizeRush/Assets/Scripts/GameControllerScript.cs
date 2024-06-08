@@ -11,7 +11,8 @@ public class GameControllerScript : MonoBehaviour
     public int mapSize = 50;
     public int scrap;
     public int score;
-    public Canvas canvas;
+    public Canvas win_canvas;
+    public Canvas death_canvas;
     public Text gameScore;
     public Text gameScrap;
     public Text gameScoreFinal;
@@ -40,7 +41,8 @@ public class GameControllerScript : MonoBehaviour
         // int chestNumber = Random.Range(2, 6); // valores aleatorios
         // spawnChests(chestNumber);
         // spawnPlayer();
-        canvas.gameObject.SetActive(false);
+        win_canvas.gameObject.SetActive(false);
+        death_canvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -67,6 +69,13 @@ public class GameControllerScript : MonoBehaviour
             }
             spawned = true;
             cooldown = 2000.0f;
+        }
+
+        if (player.life <= 0) // para o jogo quando o jogador perde, passar essa
+                              // verificação para o gamecontroller depois
+        {
+            death_canvas.gameObject.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
@@ -163,7 +172,7 @@ public class GameControllerScript : MonoBehaviour
     void endgame()
     {
         gameScoreFinal.text = gameScore.text;
-        canvas.gameObject.SetActive(true);
+        win_canvas.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
 }
