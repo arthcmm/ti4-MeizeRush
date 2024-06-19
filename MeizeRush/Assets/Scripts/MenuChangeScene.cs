@@ -14,4 +14,9 @@ public class MenuChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }

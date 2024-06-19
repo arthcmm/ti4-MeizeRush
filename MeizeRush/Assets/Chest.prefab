@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.418, y: 0.49, z: 1.5}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -50,6 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ae237b68a75d14dbd939d1dc2b19d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gemScore: 100
+  scrapFound: 30
+  ps: {fileID: 0}
   distancia: 1.2
   openChest: {fileID: 1768790996, guid: 0646363add2a9ae41804de3376ad11b8, type: 3}
 --- !u!212 &3476545786696388257
