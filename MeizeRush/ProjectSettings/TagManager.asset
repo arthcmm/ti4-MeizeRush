@@ -13,7 +13,6 @@ TagManager:
   - AttackArea
   - EnemyHitbox
   - EnemyA*
-  - PlayerA*
   layers:
   - Default
   - TransparentFX

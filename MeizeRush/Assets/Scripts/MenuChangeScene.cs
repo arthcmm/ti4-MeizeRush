@@ -7,12 +7,7 @@ public class MenuChangeScene : MonoBehaviour
 {
     public void StartGame()
     {
-        // StartCoroutine(startDelay());
-        // SceneManager.LoadScene("Game");
-    }
-    IEnumerator startDelay()
-    {
-        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Game");
     }
 
     public void ReturnToMenu()
