@@ -15,7 +15,7 @@ public class LoadingScript : MonoBehaviour
 
     IEnumerator InitializePlayer()
     {
-        // Loading falso xd
+        // Loading falso xd     
         yield return new WaitForSeconds(2f);
         LoadingScreen.SetActive(false);
     }

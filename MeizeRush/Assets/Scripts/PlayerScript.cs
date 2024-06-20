@@ -57,7 +57,7 @@ public class PlayerScript : MonoBehaviour
         gc.sliderHealth.value = life;
         // Verifica se o botão esquerdo do mouse foi pressionado e o cooldown já
         // passou
-        if (Input.GetMouseButtonDown(0) && stamina >= attackStaminaCost && !attacking)
+        if (Input.GetMouseButtonDown(0) && stamina >= attackStaminaCost && !attacking && !gc.paused)
         {
             Debug.Log("attacking");
             Attack();
