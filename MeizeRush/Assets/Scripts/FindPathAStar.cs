@@ -134,35 +134,38 @@ public class FindPathAStar : MonoBehaviour
       done = true;
       return;
     }
-
+    float g;
+    float h;
+    float f;
     foreach (MapLocation dir in directions)
     {
 
       MapLocation neighbour = dir + thisNode.location;
 
-      if (maze.map[neighbour.x, neighbour.y] == 1)
+      if (maze.map[neighbour.x, neighbour.y] == 1 || player.transform.position.x == neighbour.x || player.transform.position.y == neighbour.y)
+      {
         continue;
+      }
       if (neighbour.x < 1 || neighbour.x >= maze.boardRows || neighbour.y < 1 ||
           neighbour.y >= maze.boardColumns)
         continue;
       if (IsClosed(neighbour))
         continue;
 
-      float g =
-          Vector2.Distance(thisNode.location.ToVector(), neighbour.ToVector()) +
-          thisNode.G;
-      float h =
-          Vector2.Distance(neighbour.ToVector(), goalNode.location.ToVector());
-      float f = g + h;
+      g =
+         Vector2.Distance(thisNode.location.ToVector(), neighbour.ToVector()) +
+         thisNode.G;
+      h =
+         Vector2.Distance(neighbour.ToVector(), goalNode.location.ToVector());
+      f = g + h;
 
       if (!UpdateMarker(neighbour, g, h, f, thisNode))
       {
-
         open.Add(new PathMarker(neighbour, g, h, f, thisNode));
       }
     }
     open = open.OrderBy(p => p.F).ThenBy(n => n.H).ToList<PathMarker>();
-    PathMarker pm = (PathMarker)open.ElementAt(0);
+    PathMarker pm = open.ElementAt(0);
     closed.Add(pm);
 
     open.RemoveAt(0);
@@ -233,26 +236,16 @@ public class FindPathAStar : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D other)
   {
-
+    
     if (other.gameObject == player)
     {
       hasStarted = true;
     }
   }
-  // private void OnCollisionExit2D(Collision2D other)
-  // {
-  //   if (other.GetType() == typeof(Collider2D))
-  //   {
-  //     if (other.gameObject == player)
-  //     {
-  //       hasStarted = false;
-  //     }
-
-  //   }
-  // }
 
   private void OnTriggerExit2D(Collider2D other)
   {
+
     if (other.CompareTag("EnemyA*"))
     {
       if (other.gameObject == player)
