@@ -501,6 +501,9 @@ MonoBehaviour:
   distancia: 1
   enemyPos: {fileID: 0}
   thisEnemy: {fileID: 9160245542274711088}
+  placementMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &2348907008860594879
 MonoBehaviour:
   m_ObjectHideFlags: 0
