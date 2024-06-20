@@ -55,6 +55,7 @@ MonoBehaviour:
   ps: {fileID: 0}
   distancia: 1.2
   openChest: {fileID: 1768790996, guid: 0646363add2a9ae41804de3376ad11b8, type: 3}
+  floatingTextPrefab: {fileID: 8546890837065680241, guid: 1a2d5f9c95df7454daebcf89b903ee43, type: 3}
 --- !u!212 &3476545786696388257
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ChestScript : MonoBehaviour
@@ -12,6 +13,7 @@ public class ChestScript : MonoBehaviour
     public float distancia; //1.2 parece um bom valor
     private bool aberto;
     public Sprite openChest;
+    public GameObject floatingTextPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -41,35 +43,42 @@ public class ChestScript : MonoBehaviour
                         case 2:
                         case 3:
                         case 4:
-                            Debug.Log("Voc� ganhou uma GEMA!");
+                            Debug.Log("Você ganhou uma GEMA!");
                             gc.score += gemScore;
-                            // texto na tela
+                            ShowFloatingText("GEMA!");
                             break;
                         case 5:
-                            Debug.Log("Voc� ganhou um UPGRADE DE DANO!");
+                            Debug.Log("Você ganhou um UPGRADE DE DANO!");
                             ps.attackDamage += 5;
-                            // aumenta o dano do chicote
+                            ShowFloatingText("UPGRADE DE DANO!");
                             break;
                         case 6:
                         case 7:
                         case 8:
-                            Debug.Log("Voc� ganhou MATERIAIS!");
+                            Debug.Log("Você ganhou MATERIAIS!");
                             gc.scrap += scrapFound;
-                            // aumenta o contador de materiais
+                            ShowFloatingText("MATERIAIS!");
                             break;
                         case 9:
-                            Debug.Log("Voc� ganhou um PET NOVO!");
-                            // fun��o que pergunta se o player deseja trocar o pet antigo pelo novo, se sim, faz a troca
+                            Debug.Log("Você ganhou um PET NOVO!");
+                            ShowFloatingText("PET!");
                             break;
                         default:
-                            //etc
                             break;
                     }
                     gameObject.SetActive(false);
                 }
-                else Debug.Log("Bau ja aberto");
+                else Debug.Log("Baú já aberto");
             }
         }
-
     }
+
+
+    private void ShowFloatingText(string message)
+    {
+        GameObject floatingText = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+        TextMeshProUGUI textMesh = floatingText.GetComponent<TextMeshProUGUI>();
+        textMesh.text = message;
+    }
+
 }

@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour
     private float staminaRecover = 15;
     public int availableTraps = 0;
     private bool tired;
-    public bool hasRuby = false;
+    public bool end = false;
     [SerializeField]
     CharMove cm;
     public float defaultSpeed;
@@ -59,7 +59,7 @@ public class PlayerScript : MonoBehaviour
         gc.sliderHealth.value = life;
         // Verifica se o botão esquerdo do mouse foi pressionado e o cooldown já
         // passou
-        if (Input.GetMouseButtonDown(0) && stamina >= attackStaminaCost && !attacking)
+        if (Input.GetMouseButtonDown(0) && stamina >= attackStaminaCost && !attacking && !gc.paused)
         {
             // Debug.Log("attacking");
             src.clip = attackSound;
