@@ -52,7 +52,7 @@ public class GameControllerScript : MonoBehaviour
         scrap = Mathf.Clamp(scrap, 0, 999);
         gameScore.text = score.ToString();
         gameScrap.text = scrap.ToString();
-        if (player.hasRuby)
+        if (player.end)
         {
             endgame();
         }

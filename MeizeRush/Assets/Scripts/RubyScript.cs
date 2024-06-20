@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class RubyScript : MonoBehaviour
 {
+    private bool podeSair = false;
+    public Vector2Int randomPosition = new Vector2Int(90000, 90000);
     private PlayerScript playerScript;
     private GameObject player;
     public GameControllerScript gc;
@@ -97,6 +100,12 @@ public class RubyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int px = (int)player.transform.position.x;
+        int py = (int)player.transform.position.y;
+        if (podeSair && px == randomPosition.x && py == randomPosition.y)
+        {
+            playerScript.end = true;
+        }
         spawnCooldown -= Time.deltaTime;
         if (spawnCooldown <= 0.0f && !spawned)
         {
@@ -111,11 +120,11 @@ public class RubyScript : MonoBehaviour
             Debug.Log("Pressione E para pegar o rubi");
             if (Input.GetKeyDown(KeyCode.E))
             {
-                playerScript.hasRuby = true;
                 gc.score += 5000;
                 // Adicione aqui o c�digo para tocar um som, se necess�rio
                 ruby.SetActive(false);
                 gerarSaida();
+                podeSair = true;
             }
         }
     }
@@ -127,11 +136,16 @@ public class RubyScript : MonoBehaviour
 
         // Convertendo o HashSet para uma lista para poder acessar o elemento pelo índice
         List<Vector2Int> positionsList = new List<Vector2Int>(positions);
-        Vector2Int randomPosition = positionsList[randomIndex];
+        randomPosition = positionsList[randomIndex];
+        boardManager.tileMapVisualizer.wallTileMap.SetTile(new Vector3Int(randomPosition.x, randomPosition.y, (int)player.transform.position.z), null);
 
         // Chamada para pintar a posição aleatória no floorTileMap com tamanho 7
         boardManager.tileMapVisualizer.PaintFloorTiles(new List<Vector2Int> { randomPosition }, 7);
+
+        boardManager.map[randomPosition.x, randomPosition.y] = 0;
+
     }
+
 }
 
 public class RubyFloat : MonoBehaviour
@@ -151,4 +165,5 @@ public class RubyFloat : MonoBehaviour
         float newY = startPos.y + amplitude * Mathf.Sin(Time.time * frequency);
         transform.localPosition = new Vector3(startPos.x, newY, startPos.z);
     }
+
 }
