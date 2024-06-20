@@ -77,6 +77,7 @@ public class GameControllerScript : MonoBehaviour
         if (player.life <= 0) // para o jogo quando o jogador perde, passar essa
                               // verificação para o gamecontroller depois
         {
+            paused=true;
             death_canvas.gameObject.SetActive(true);
             Time.timeScale = 0;
         }
@@ -179,6 +180,7 @@ public class GameControllerScript : MonoBehaviour
 
     void endgame()
     {
+        paused=true;
         gameScoreFinal.text = gameScore.text;
         win_canvas.gameObject.SetActive(true);
         Time.timeScale = 0;
@@ -192,6 +194,7 @@ public class GameControllerScript : MonoBehaviour
     }
     public void unpause()
     {
+    
         pause_canvas.gameObject.SetActive(false);
         Time.timeScale = 1;
         paused = false;
