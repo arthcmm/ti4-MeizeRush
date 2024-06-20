@@ -7,6 +7,8 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     Vector2 pointerPosition { get; set; }
+    public AudioSource src;
+    public AudioClip attackSound;
     public Canvas canvas;
     public float life = 100;
     public float attackDamage = 25;     // dano de ataque do jogador
@@ -59,7 +61,9 @@ public class PlayerScript : MonoBehaviour
         // passou
         if (Input.GetMouseButtonDown(0) && stamina >= attackStaminaCost && !attacking)
         {
-            Debug.Log("attacking");
+            // Debug.Log("attacking");
+            src.clip = attackSound;
+            src.Play();
             Attack();
             stamina = stamina - attackStaminaCost;
         }
