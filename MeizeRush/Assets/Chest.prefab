@@ -52,6 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gemScore: 100
   scrapFound: 30
+  audioSource: {fileID: 641176608311826004, guid: 273eeee3137d44643a20edc588c35f17, type: 3}
+  gemAudio: {fileID: 8300000, guid: b86168074499b3544921aa4340da4ae8, type: 3}
   ps: {fileID: 0}
   distancia: 1.2
   openChest: {fileID: 1768790996, guid: 0646363add2a9ae41804de3376ad11b8, type: 3}
