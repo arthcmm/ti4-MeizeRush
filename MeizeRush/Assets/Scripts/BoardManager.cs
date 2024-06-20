@@ -288,6 +288,10 @@ public class BoardManager : MonoBehaviour {
         for (int j = (int)corridor.y; j < corridor.yMax; j++) {
           if (boardPositionsFloor[i, j] == null) {
             corridorFloors.Add(new Vector2Int(i, j));
+            // GameObject instance = Instantiate(corridorTile, new Vector3(i, j,
+            // 0f), Quaternion.identity) as GameObject;
+            // instance.transform.SetParent(transform);
+            // boardPositionsFloor[i, j] = instance;
           }
         }
       }
@@ -305,7 +309,6 @@ public class BoardManager : MonoBehaviour {
     allTiles.UnionWith(corridorFloors);
     walls = WallGenerator.CreateWalls(allTiles, tileMapVisualizer, 0);
     map = new byte[boardRows, boardColumns];
-  
     for (int i = 0; i < boardRows - 1; i++) {
       for (int j = 0; j < boardColumns - 1; j++) {
         map[i, j] = 1;

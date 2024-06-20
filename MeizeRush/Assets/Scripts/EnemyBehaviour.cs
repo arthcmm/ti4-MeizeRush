@@ -13,7 +13,6 @@ public class EnemyBehaviour : MonoBehaviour {
   public LayerMask
       placementMask; // Set up a LayerMask in the Inspector to check only the
 
-
   private float cooldownTimer = 1.0f;
   // Start is called before the first frame update
   void Start() {
