@@ -11,8 +11,10 @@ public class GameControllerScript : MonoBehaviour
     public int mapSize = 50;
     public int scrap;
     public int score;
+    public bool paused = false;
     public Canvas win_canvas;
     public Canvas death_canvas;
+    public Canvas pause_canvas;
     public Text gameScore;
     public Text gameScrap;
     public Text gameScoreFinal;
@@ -43,6 +45,7 @@ public class GameControllerScript : MonoBehaviour
         // spawnPlayer();
         win_canvas.gameObject.SetActive(false);
         death_canvas.gameObject.SetActive(false);
+        pause_canvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,8 +53,8 @@ public class GameControllerScript : MonoBehaviour
     {
         score = Mathf.Clamp(score, 0, 9999);
         scrap = Mathf.Clamp(scrap, 0, 999);
-        gameScore.text = score.ToString();
-        gameScrap.text = scrap.ToString();
+        gameScore.text = score.ToString("D4");
+        gameScrap.text = scrap.ToString("D3");
         if (player.hasRuby)
         {
             endgame();
@@ -76,6 +79,11 @@ public class GameControllerScript : MonoBehaviour
         {
             death_canvas.gameObject.SetActive(true);
             Time.timeScale = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pause();
         }
     }
 
@@ -174,5 +182,18 @@ public class GameControllerScript : MonoBehaviour
         gameScoreFinal.text = gameScore.text;
         win_canvas.gameObject.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    void pause()
+    {
+        Time.timeScale = 0;
+        pause_canvas.gameObject.SetActive(true);
+        paused = true;
+    }
+    public void unpause()
+    {
+        pause_canvas.gameObject.SetActive(false);
+        Time.timeScale = 1;
+        paused = false;
     }
 }
