@@ -10,6 +10,8 @@ public class AttackArea : MonoBehaviour
     public PlayerScript player; //puxo o dano daqui
     public EnemyBehaviour enemy;
     public Animator animator;
+    public AudioSource audioSource;
+    public AudioClip deathSound, enemySound;
     public Vector2 pointerPosition { get; set; }
 
     // public Vector2 movement;
@@ -26,7 +28,12 @@ public class AttackArea : MonoBehaviour
             if (enemy != null)
             {
                 enemy.health -= player.attackDamage;
-                Debug.Log("Hitou o inimigo: " + enemy.name + ", nova vida: " + enemy.health);
+                if (enemy.health <= 0)
+                {
+                    audioSource.clip = deathSound;
+                    audioSource.Play();
+                }
+                // Debug.Log("Hitou o inimigo: " + enemy.name + ", nova vida: " + enemy.health);
             }
             else
             {

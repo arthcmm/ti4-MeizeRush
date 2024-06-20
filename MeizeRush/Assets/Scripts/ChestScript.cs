@@ -8,6 +8,8 @@ public class ChestScript : MonoBehaviour
     private Transform player;
     [SerializeField] int gemScore = 100;
     [SerializeField] int scrapFound = 30;
+    public AudioSource audioSource;
+    public AudioClip gemAudio;
     private GameControllerScript gc;
     public PlayerScript ps;
     public float distancia; //1.2 parece um bom valor
@@ -15,7 +17,12 @@ public class ChestScript : MonoBehaviour
     public Sprite openChest;
     public GameObject floatingTextPrefab;
 
+
     // Start is called before the first frame update
+    void Awake()
+    {
+        audioSource = GameObject.FindGameObjectWithTag("ChestSound").GetComponent<AudioSource>();
+    }
     void Start()
     {
         aberto = false;
@@ -36,6 +43,8 @@ public class ChestScript : MonoBehaviour
                     aberto = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = openChest;
                     int item = Random.Range(0, 9);
+                    audioSource.clip = gemAudio;
+                    audioSource.Play();
                     switch (item)
                     {
                         case 0:
@@ -66,13 +75,20 @@ public class ChestScript : MonoBehaviour
                         default:
                             break;
                     }
-                    gameObject.SetActive(false);
+                    StartCoroutine(DeactivateAfterAudio());
                 }
                 else Debug.Log("Baú já aberto");
             }
         }
     }
+    private IEnumerator DeactivateAfterAudio()
+    {
+        // Wait for the audio to finish playing
+        yield return new WaitWhile(() => audioSource.isPlaying);
 
+        // Deactivate the GameObject
+        gameObject.SetActive(false);
+    }
 
     private void ShowFloatingText(string message)
     {
