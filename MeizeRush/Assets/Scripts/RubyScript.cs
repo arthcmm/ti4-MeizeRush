@@ -15,6 +15,7 @@ public class RubyScript : MonoBehaviour
     private GameObject ruby;
     private GameObject pedestal;
     public float floatAmplitude = 0.5f;
+    public byte[,] placedMatrix;
     public float floatFrequency = 1f;
     public Vector2 spawnAreaMin = new Vector2(
         -35, -35); // Defina valores padr�o se n�o for configurar via Inspector
@@ -31,6 +32,7 @@ public class RubyScript : MonoBehaviour
             GameObject.FindGameObjectWithTag("Board").GetComponent<BoardManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerScript>();
+        getRandomPosition();
     }
 
 
@@ -49,10 +51,10 @@ public class RubyScript : MonoBehaviour
         return false;
     }
 
-    private Vector3 getRandomPosition()
+    private void getRandomPosition()
     {
-        byte[,] placedMatrix =
-            new byte[boardManager.boardRows, boardManager.boardColumns];
+        placedMatrix =
+             new byte[boardManager.boardRows, boardManager.boardColumns];
 
         for (int i = 0; i < boardManager.boardRows; i++)
         {
@@ -61,21 +63,8 @@ public class RubyScript : MonoBehaviour
                 placedMatrix[i, j] = boardManager.map[i, j];
             }
         }
-
-        int indexX = 0;
-        int indexY = 0;
-        do
-        {
-            indexX = Random.Range(0, boardManager.boardRows - 1);
-            indexY = Random.Range(0, boardManager.boardColumns - 1);
-        } while (isCloseToWall(placedMatrix, indexX, indexY));
-
-        Vector3 position = new Vector3(indexX, indexY, 0);
-        Debug.Log("RANDOM RUBY POS:  " + position);
-        placedMatrix[indexX, indexY] = 1;
-        return position;
     }
-    void SpawnPedestalAndRuby()
+    void SpawnPedestalAndRuby(Vector3 position)
     {
         // Define a posi��o de spawn do pedestal dentro da �rea de spawn
         // Vector2 spawnPosition = new Vector2(
@@ -85,7 +74,7 @@ public class RubyScript : MonoBehaviour
 
         // Instancia o pedestal na posi��o de spawn
         pedestal =
-            Instantiate(pedestalPrefab, getRandomPosition(), Quaternion.identity);
+            Instantiate(pedestalPrefab, position, Quaternion.identity);
 
         // Instancia o rubi como filho do pedestal e posiciona acima do pedestal
         ruby = Instantiate(rubyPrefab, pedestal.transform);
@@ -100,18 +89,35 @@ public class RubyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         int px = (int)player.transform.position.x;
         int py = (int)player.transform.position.y;
         if (podeSair && px == randomPosition.x && py == randomPosition.y)
         {
             playerScript.end = true;
         }
+
         spawnCooldown -= Time.deltaTime;
-        if (spawnCooldown <= 0.0f && !spawned)
+        if (!spawned)
         {
-            SpawnPedestalAndRuby();
-            spawned = true;
-            spawnCooldown = 2000.0f;
+            int indexX = Random.Range(0, boardManager.boardRows - 1);
+            int indexY = Random.Range(0, boardManager.boardColumns - 1);
+            bool valid = (System.Math.Abs(px - indexX) >= 40 || System.Math.Abs(py - indexY) >= 40);
+            if (valid && placedMatrix[indexX, indexY] == 0)
+            {
+                Debug.Log(valid);
+                Debug.Log("calc:  " + (px - indexX) + "  " + System.Math.Abs(px - indexX) + " y" + (py - indexY) + "  " + System.Math.Abs(py - indexY));
+                Vector3 position = new Vector3(indexX, indexY, 0);
+                Debug.Log("RANDOM RUBY POS:  " + position);
+
+                placedMatrix[indexX, indexY] = 1;
+                if (spawnCooldown <= 0.0f)
+                {
+                    SpawnPedestalAndRuby(position);
+                    spawned = true;
+                    spawnCooldown = 2000.0f;
+                }
+            }
         }
         if (spawned == true && Vector3.Distance(player.transform.position, ruby.transform.position) <
                 2 &&
