@@ -11,6 +11,7 @@ public class GameControllerScript : MonoBehaviour
     public int mapSize = 50;
     public int scrap;
     public int score;
+    private int traps;
     public bool paused = false;
     public Canvas win_canvas;
     public Canvas death_canvas;
@@ -18,6 +19,7 @@ public class GameControllerScript : MonoBehaviour
     public Text gameScore;
     public Text gameScrap;
     public Text gameScoreFinal;
+    public Text contaTrap;
     public Transform spawnPoint;
     public GameObject chest;
     public PlayerScript player;
@@ -54,6 +56,9 @@ public class GameControllerScript : MonoBehaviour
     {
         score = Mathf.Clamp(score, 0, 9999);
         scrap = Mathf.Clamp(scrap, 0, 999);
+        traps = player.availableTraps;
+        traps = Mathf.Clamp(traps, 0, 99);
+        contaTrap.text = traps.ToString("D2");
         gameScore.text = score.ToString("D4");
         gameScrap.text = scrap.ToString("D3");
         if (player.end)

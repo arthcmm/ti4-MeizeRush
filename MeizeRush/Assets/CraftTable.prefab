@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuPrefab: {fileID: 1438360481162266404, guid: f6b82c8cecb664d279b9c27e0f5eb2e2, type: 3}
+  mesa: {fileID: 174507017279860328}
+  cms: {fileID: 0}
 --- !u!212 &6381074915548223717
 SpriteRenderer:
   m_ObjectHideFlags: 0

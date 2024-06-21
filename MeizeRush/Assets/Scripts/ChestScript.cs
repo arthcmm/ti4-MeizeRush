@@ -62,6 +62,7 @@ public class ChestScript : MonoBehaviour
                             gameObject.GetComponent<SpriteRenderer>().sprite = diamondChest;
                             break;
                         case 4:
+                            gameObject.GetComponent<SpriteRenderer>().sprite = heartChest;
                             Debug.Log("Você recuperou VIDA!");
                             if (ps.life + 10 >= 100)
                             {
