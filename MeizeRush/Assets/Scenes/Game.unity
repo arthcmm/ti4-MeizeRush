@@ -5666,7 +5666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35065674f29a3a241a04ac659a3da841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
   movement: {x: 0, y: 0}
   pointer: {x: 0, y: 0}
   walkAnimator: {fileID: 8504158895755420122}
