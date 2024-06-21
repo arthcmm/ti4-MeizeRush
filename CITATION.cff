@@ -1,27 +1,31 @@
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title:
+title: Meize Rush
 authors:
+  - family-names: Tavares Coimbra Ribeiro 
+    given-names: Vinícius
+  - family-names: Buildrini
+    given-names: Leonardo 
+  - family-names: Souza
+    given-names: Wanderson 
+  - family-names: Castro
+    given-names: Arthur 
+  - family-names: Lima
+    given-names: Arthur
   - family-names:
     given-names:
   - family-names:
     given-names:
-  - family-names:
-    given-names:
-  - family-names:
-    given-names:
-  - family-names:
-    given-names:
-  - family-names:
-    given-names:
-  - family-names:
-    given-names:
-  - name-suffix: Professor XXXX
+  - name-suffix: Professor
     affiliation: PUC Minas
-    family-names:
-    given-names:
+    family-names: Neri
+    given-names: Cristiane
+    family-names: Mol
+    given-names: Arthur
+    family-names: Mota
+    given-names: Rosilane
 keywords:
-  -
+  - Game, Software, Graph, Ai
   -
 repository-code:
 license: CC-BY-4.0
