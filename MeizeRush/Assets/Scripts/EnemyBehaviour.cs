@@ -14,6 +14,9 @@ public class EnemyBehaviour : MonoBehaviour
   private PlayerScript playerScript;
   public SpriteRenderer spriteRenderer;
 
+  public AudioSource audioSource;
+  public AudioClip trap,playerHit;
+
   public LayerMask
       placementMask; // Set up a LayerMask in the Inspector to check only the
 
@@ -25,7 +28,6 @@ public class EnemyBehaviour : MonoBehaviour
     yield return new WaitForSeconds(0.1f);
     spriteRenderer.color = Color.white;
   }
-
   // Start is called before the first frame update
   void Start()
   {
@@ -33,6 +35,8 @@ public class EnemyBehaviour : MonoBehaviour
     playerScript = player.GetComponent<PlayerScript>();
     controller = GameObject.FindGameObjectWithTag("Controller");
     randomPlaceEnemies = controller.GetComponent<RandomPlaceEnemies>();
+    audioSource = GameObject.FindGameObjectWithTag("TrapSound").GetComponent<AudioSource>();
+
 
   }
 
@@ -55,6 +59,8 @@ public class EnemyBehaviour : MonoBehaviour
       if (cooldownTimer <= 0.0f)
       {
         playerScript.life -= 5;
+        audioSource.clip = playerHit;
+        audioSource.Play();
         // Debug.Log("Player hit: " + playerScript.life);
         cooldownTimer = 1.0f;
       }
@@ -82,11 +88,15 @@ public class EnemyBehaviour : MonoBehaviour
     {
       if (hits[0].CompareTag("Trap"))
       {
+        audioSource.clip = trap;
+        audioSource.Play();
         thisEnemy.SetActive(false);
+        // StartCoroutine(DeactivateAfterAudio());
         health = 100; // reseta para respawnar o inimigo depois
         // Log and remove the first interactable object encountered
         Destroy(hits[0].gameObject);
       }
     }
   }
+  
 }

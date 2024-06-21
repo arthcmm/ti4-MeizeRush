@@ -21,6 +21,7 @@ TagManager:
   - Floor
   - NavMesh
   - EnemySounds
+  - TrapSound
   layers:
   - Default
   - TransparentFX

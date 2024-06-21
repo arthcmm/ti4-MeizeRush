@@ -55,6 +55,9 @@ MonoBehaviour:
   scrapFound: 30
   audioSource: {fileID: 641176608311826004, guid: 273eeee3137d44643a20edc588c35f17, type: 3}
   gemAudio: {fileID: 8300000, guid: b86168074499b3544921aa4340da4ae8, type: 3}
+  dmgAudio: {fileID: 8300000, guid: 8200fc69853f1754d872f5f6fb8b62be, type: 3}
+  lifeAudio: {fileID: 8300000, guid: 85a126f9baa06a143a25da617c550ae5, type: 3}
+  matAudio: {fileID: 8300000, guid: cd5f237d6380ad343ae975b3f09fe69c, type: 3}
   ps: {fileID: 0}
   distancia: 1.2
   damageChest: {fileID: 21300000, guid: 2a82c4db1bc68134db26d0ee55f64c67, type: 3}
@@ -62,6 +65,7 @@ MonoBehaviour:
   gearChest: {fileID: 21300000, guid: a4087eac23cab034eb3fcccf6c1600ca, type: 3}
   petChest: {fileID: 21300000, guid: 13a40f9de80a7234a9a990622249085d, type: 3}
   heartChest: {fileID: 21300000, guid: 3365efee5e29c284eb9eb485f2f458bb, type: 3}
+  pnm: {fileID: 0}
   floatingTextPrefab: {fileID: 5535497880761042577, guid: 77afc3491aba1b14e9507d5256f6ea36, type: 3}
 --- !u!212 &3476545786696388257
 SpriteRenderer:

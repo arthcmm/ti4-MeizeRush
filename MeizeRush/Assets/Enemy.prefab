@@ -398,6 +398,9 @@ MonoBehaviour:
   enemyPos: {fileID: 0}
   thisEnemy: {fileID: 9160245542274711088}
   spriteRenderer: {fileID: 4682735167038230947}
+  audioSource: {fileID: 0}
+  trap: {fileID: 8300000, guid: d8761dcce6de0a14293d9096e11214cd, type: 3}
+  playerHit: {fileID: 8300000, guid: 86b7f9c6ee63eb348b6b95bff88d0c8b, type: 3}
   placementMask:
     serializedVersion: 2
     m_Bits: 512

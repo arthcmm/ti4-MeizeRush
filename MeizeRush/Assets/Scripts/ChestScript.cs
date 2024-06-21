@@ -2,24 +2,23 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
-public class ChestScript : MonoBehaviour {
-  private Transform player;
-  [SerializeField]
-  int gemScore = 100;
-  [SerializeField]
-  int scrapFound = 30;
-  public AudioSource audioSource;
-  public AudioClip gemAudio;
-  private GameControllerScript gc;
-  public PlayerScript ps;
-  public float distancia; // 1.2 parece um bom valor
-  private bool aberto;
-  public Sprite damageChest;
-  public Sprite diamondChest;
-  public Sprite gearChest;
-  public Sprite petChest;
-  public Sprite heartChest;
-  public PetNavMesh pnm;
+public class ChestScript : MonoBehaviour
+{
+    private Transform player;
+    [SerializeField] int gemScore = 100;
+    [SerializeField] int scrapFound = 30;
+    public AudioSource audioSource;
+    public AudioClip gemAudio, dmgAudio, lifeAudio, matAudio;
+    private GameControllerScript gc;
+    public PlayerScript ps;
+    public float distancia; //1.2 parece um bom valor
+    private bool aberto;
+    public Sprite damageChest;
+    public Sprite diamondChest;
+    public Sprite gearChest;
+    public Sprite petChest;
+    public Sprite heartChest;
+    public PetNavMesh pnm;
 
   public GameObject floatingTextPrefab;
   private Canvas mainCanvas; // Adicione uma referência ao Canvas principal
@@ -42,30 +41,66 @@ public class ChestScript : MonoBehaviour {
     gc = GameObject.FindGameObjectWithTag("Controller")
              .GetComponent<GameControllerScript>();
   }
-
-  void Update() {
-    if (Vector3.Distance(transform.position, player.position) <= distancia) {
-      if (Input.GetKeyDown(KeyCode.E)) {
-        if (!aberto) {
-          aberto = true;
-          int item = Random.Range(0, 9);
-          audioSource.clip = gemAudio;
-          audioSource.Play();
-          switch (item) {
-          case 0:
-          case 1:
-          case 2:
-          case 3:
-            Debug.Log("Você ganhou uma GEMA!");
-            gc.score += gemScore;
-            gameObject.GetComponent<SpriteRenderer>().sprite = diamondChest;
-            break;
-          case 4:
-            Debug.Log("Você recuperou VIDA!");
-            if (ps.life + 10 >= 100) {
-              ps.life = 100;
-            } else if (ps.life < 100) {
-              ps.life += 10;
+    void Update()
+    {
+        if (Vector3.Distance(transform.position, player.position) <= distancia)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (!aberto)
+                {
+                    aberto = true;
+                    int item = Random.Range(0, 9);
+                    switch (item)
+                    {
+                        case 0:
+                        case 1:
+                        case 2:
+                        case 3:
+                            Debug.Log("Você ganhou uma GEMA!");
+                            audioSource.clip = gemAudio;
+                            gc.score += gemScore;
+                            gameObject.GetComponent<SpriteRenderer>().sprite = diamondChest;
+                            break;
+                        case 4:
+                            gameObject.GetComponent<SpriteRenderer>().sprite = heartChest;
+                            Debug.Log("Você recuperou VIDA!");
+                            audioSource.clip = lifeAudio;
+                            if (ps.life + 10 >= 100)
+                            {
+                                ps.life = 100;
+                            }
+                            else if (ps.life < 100)
+                            {
+                                ps.life += 10;
+                            }
+                            break;
+                        case 5:
+                            Debug.Log("Você ganhou um UPGRADE DE DANO!");
+                            audioSource.clip = dmgAudio;
+                            ps.attackDamage += 5;
+                            gameObject.GetComponent<SpriteRenderer>().sprite = damageChest;
+                            break;
+                        case 6:
+                        case 7:
+                        case 8:
+                            Debug.Log("Você ganhou MATERIAIS!");
+                            audioSource.clip = matAudio;
+                            gc.scrap += scrapFound;
+                            gameObject.GetComponent<SpriteRenderer>().sprite = gearChest;
+                            break;
+                        case 9:
+                            Debug.Log("Você ganhou um PET NOVO!");
+                            gameObject.GetComponent<SpriteRenderer>().sprite = petChest;
+                            pnm.comecar();
+                            break;
+                        default:
+                            break;
+                    }
+                    audioSource.Play();
+                    StartCoroutine(DeactivateAfterAudio());
+                }
+                else Debug.Log("Baú já aberto");
             }
             break;
           case 5:
