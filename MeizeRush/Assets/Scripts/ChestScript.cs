@@ -51,7 +51,7 @@ public class ChestScript : MonoBehaviour {
           int item = Random.Range(0, 9);
           audioSource.clip = gemAudio;
           audioSource.Play();
-          switch (9) {
+          switch (item) {
           case 0:
           case 1:
           case 2:
