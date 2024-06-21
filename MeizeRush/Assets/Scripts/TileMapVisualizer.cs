@@ -9,18 +9,30 @@ public class TileMapVisualizer : MonoBehaviour
 {
 
     [SerializeField]
-    public Tilemap floorTileMap, wallTileMap;
+    public Tilemap floorTileMap, wallTileMap, leaveFloor;
 
     [SerializeField]
     private TileBase[] floorTile = new TileBase[8];
     public TileBase[] corridorTile = new TileBase[2];
     public TileBase[] wallLeftTile = new TileBase[1];
 
+    public TileBase[] leaveTile = new TileBase[1];
+
     public object Tilemap { get; internal set; }
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions, int size)
     {
         PaintTiles(floorPositions, floorTileMap, floorTile, size);
+    }
+    public void PaintLeaveFloor(IEnumerable<Vector2Int> floorPositions, int size)
+    {
+        foreach (var position in floorPositions)
+        {
+            Vector3Int tilePosition = new Vector3Int(position.x, position.y, 5);
+            TileBase tile = leaveTile[UnityEngine.Random.Range(0, 70 % (size + 1))];
+            leaveFloor.SetTile(tilePosition, tile);
+        }
+        //PaintTiles(floorPositions, leaveFloor, leaveTile, size);
     }
     public void PaintCorridorTiles(IEnumerable<Vector2Int> floorPositions, int size)
     {

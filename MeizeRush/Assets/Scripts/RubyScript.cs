@@ -164,7 +164,8 @@ public class RubyScript : MonoBehaviour
         boardManager.tileMapVisualizer.wallTileMap.SetTile(new Vector3Int(randomPosition.x, randomPosition.y, (int)player.transform.position.z), null);
 
         // Chamada para pintar a posição aleatória no floorTileMap com tamanho 7
-        boardManager.tileMapVisualizer.PaintFloorTiles(new List<Vector2Int> { randomPosition }, 7);
+        boardManager.tileMapVisualizer.PaintLeaveFloor(new List<Vector2Int> { randomPosition }, 1);
+        //boardManager.tileMapVisualizer.PaintFloorTiles(new List<Vector2Int> { randomPosition }, 7);
 
         boardManager.map[randomPosition.x, randomPosition.y] = 0;
 
