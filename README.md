@@ -6,7 +6,7 @@ Bem-vindo ao **Meize Rush**! Neste emocionante jogo de aventura, você joga como
 
 ### Opção 1
 
-Rode o Executável.
+Abra a pasta MeizeExecutavel e rode direto de lá!
 
 ### Opção 2
 1. Clone o repositório:
