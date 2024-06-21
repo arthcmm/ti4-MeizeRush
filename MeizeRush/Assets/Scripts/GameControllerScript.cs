@@ -57,108 +57,158 @@ public class GameControllerScript : MonoBehaviour {
       endgame();
     }
 
-    cooldown -= Time.deltaTime;
-    if (cooldown <= 0.0f && !spawned) {
-      spawnPlayer();
-      InstantiateObjectsRandomly(); // adiciona em uma lista
-      foreach (GameObject obj in chests) {
-        obj.SetActive(true);
-        // Instantiate(obj);
-      }
-      spawned = true;
-      cooldown = 2000.0f;
-    }
-
-    if (player.life <= 0) // para o jogo quando o jogador perde, passar essa
-                          // verificação para o gamecontroller depois
+    // Update is called once per frame
+    void Update()
     {
-      paused = true;
-      death_canvas.gameObject.SetActive(true);
-      Time.timeScale = 0;
+        score = Mathf.Clamp(score, 0, 9999);
+        scrap = Mathf.Clamp(scrap, 0, 999);
+        gameScore.text = score.ToString("D4");
+        gameScrap.text = scrap.ToString("D3");
+        if (player.end)
+        {
+            Endgame();
+        }
+
+        cooldown -= Time.deltaTime;
+        if (cooldown <= 0.0f && !spawned)
+        {
+            spawnPlayer();
+            InstantiateObjectsRandomly(); // adiciona em uma lista
+            foreach (GameObject obj in chests)
+            {
+                obj.SetActive(true);
+                // Instantiate(obj);
+            }
+            spawned = true;
+            cooldown = 2000.0f;
+        }
+
+        if (player.life <= 0) // para o jogo quando o jogador perde, passar essa
+                              // verificação para o gamecontroller depois
+        {
+            paused=true;
+            death_canvas.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause();
+        }
     }
 
-    if (Input.GetKeyDown(KeyCode.Escape)) {
-      pause();
+    private Vector3 GetRandomPosition()
+    {
+        byte[,] placedMatrix =
+            new byte[boardManager.boardRows, boardManager.boardColumns];
+
+        for (int i = 0; i < boardManager.boardRows; i++)
+        {
+            for (int j = 0; j < boardManager.boardColumns; j++)
+            {
+                placedMatrix[i, j] = boardManager.map[i, j];
+            }
+        }
+
+        int indexX;
+
+        int indexY;
+        do
+        {
+            indexX = Random.Range(1, boardManager.boardRows - 2);
+            indexY = Random.Range(1, boardManager.boardColumns - 2);
+        } while (IsCloseToWall(placedMatrix, indexX, indexY));
+
+        Vector3 position = new Vector3(indexX, indexY, 0);
+        placedMatrix[indexX, indexY] = 1;
+
+        return position;
+    }
+
+    private bool IsCloseToWall(byte[,] placedMatrix, int x, int y)
+    {
+        if (placedMatrix[x, y] >= 1 || placedMatrix[x + 1, y] >= 1 ||
+            placedMatrix[x, y + 1] >= 1 || placedMatrix[x + 1, y + 1] >= 1)
+        {
+            return true;
+        }
+        else if (placedMatrix[x - 1, y] >= 1 || placedMatrix[x, y - 1] >= 1 ||
+                   placedMatrix[x - 1, y - 1] >= 1)
+        {
+            return true;
+        }
+        return false;
     }
   }
 
-  private Vector3 getRandomPosition() {
-    byte[,] placedMatrix =
-        new byte[boardManager.boardRows, boardManager.boardColumns];
-
-    for (int i = 0; i < boardManager.boardRows; i++) {
-      for (int j = 0; j < boardManager.boardColumns; j++) {
-        placedMatrix[i, j] = boardManager.map[i, j];
-      }
+    void spawnPlayer()
+    {
+        // bool isWall = true;
+        // Vector2Int element = new Vector2Int(0, 0);
+        // while (isWall) {
+        //   element = boardManager.roomFloors.ElementAt(
+        //       Random.Range(0, boardManager.roomFloors.Count));
+        //   if (!boardManager.walls.Contains(element)) {
+        //     isWall = false;
+        //   }
+        // }
+        // // Debug.Log("RANDOM FLOOR POS:  " + element);
+        // Vector3 newPos = new Vector3(element.x, element.y, 0);
+        playerTransform.position = GetRandomPosition();
     }
 
-    int indexX;
+    void InstantiateObjectsRandomly()
+    {
+        int objectsCount = Random.Range(minChests, maxChests + 1);
+        byte[,] placedMatrix =
+            new byte[boardManager.boardRows, boardManager.boardColumns];
 
-    int indexY;
-    do {
-      indexX = Random.Range(1, boardManager.boardRows - 2);
-      indexY = Random.Range(1, boardManager.boardColumns - 2);
-    } while (isCloseToWall(placedMatrix, indexX, indexY));
+        for (int i = 0; i < boardManager.boardRows; i++)
+        {
+            for (int j = 0; j < boardManager.boardColumns; j++)
+            {
+                placedMatrix[i, j] = boardManager.map[i, j];
+            }
+        }
 
-    Vector3 position = new Vector3(indexX, indexY, 0);
-    placedMatrix[indexX, indexY] = 1;
+        for (int i = 0; i < objectsCount; i++)
+        {
+            int indexX = 0;
+            int indexY = 0;
+            do
+            {
+                indexX = Random.Range(0, boardManager.boardRows - 1);
+                indexY = Random.Range(0, boardManager.boardColumns - 1);
+            } while (IsCloseToWall(placedMatrix, indexX, indexY));
 
-    return position;
-  }
-
-  private bool isCloseToWall(byte[,] placedMatrix, int x, int y) {
-    if (placedMatrix[x, y] >= 1 || placedMatrix[x + 1, y] >= 1 ||
-        placedMatrix[x, y + 1] >= 1 || placedMatrix[x + 1, y + 1] >= 1) {
-      return true;
-    } else if (placedMatrix[x - 1, y] >= 1 || placedMatrix[x, y - 1] >= 1 ||
-               placedMatrix[x - 1, y - 1] >= 1) {
-      return true;
-    }
-    return false;
-  }
-
-  void spawnPlayer() {
-    // bool isWall = true;
-    // Vector2Int element = new Vector2Int(0, 0);
-    // while (isWall) {
-    //   element = boardManager.roomFloors.ElementAt(
-    //       Random.Range(0, boardManager.roomFloors.Count));
-    //   if (!boardManager.walls.Contains(element)) {
-    //     isWall = false;
-    //   }
-    // }
-    // // Debug.Log("RANDOM FLOOR POS:  " + element);
-    // Vector3 newPos = new Vector3(element.x, element.y, 0);
-    Vector3 position = getRandomPosition();
-    playerTransform.position = position;
-    StartCoroutine(waitSpawnPet());
-  }
-
-  IEnumerator waitSpawnPet() { yield return new WaitForSeconds(5f); }
-
-  void InstantiateObjectsRandomly() {
-    int objectsCount = Random.Range(minChests, maxChests + 1);
-    byte[,] placedMatrix =
-        new byte[boardManager.boardRows, boardManager.boardColumns];
-
-    for (int i = 0; i < boardManager.boardRows; i++) {
-      for (int j = 0; j < boardManager.boardColumns; j++) {
-        placedMatrix[i, j] = boardManager.map[i, j];
-      }
+            Vector3 position = new Vector3(indexX, indexY, 0);
+            placedMatrix[indexX, indexY] = 1;
+            GameObject chestI = Instantiate(chest, position, Quaternion.identity);
+            chests.Add(chestI);
+        }
     }
 
-    for (int i = 0; i < objectsCount; i++) {
-      int indexX = 0;
-      int indexY = 0;
-      do {
-        indexX = Random.Range(0, boardManager.boardRows - 1);
-        indexY = Random.Range(0, boardManager.boardColumns - 1);
-      } while (isCloseToWall(placedMatrix, indexX, indexY));
+    void Endgame()
+    {
+        paused=true;
+        gameScoreFinal.text = gameScore.text;
+        win_canvas.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
 
-      Vector3 position = new Vector3(indexX, indexY, 0);
-      placedMatrix[indexX, indexY] = 1;
-      GameObject chestI = Instantiate(chest, position, Quaternion.identity);
-      chests.Add(chestI);
+    void Pause()
+    {
+        Time.timeScale = 0;
+        pause_canvas.gameObject.SetActive(true);
+        paused = true;
+    }
+    public void Unpause()
+    {
+    
+        pause_canvas.gameObject.SetActive(false);
+        Time.timeScale = 1;
+        paused = false;
+
     }
   }
 

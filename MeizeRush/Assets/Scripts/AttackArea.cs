@@ -28,6 +28,9 @@ public class AttackArea : MonoBehaviour
             if (enemy != null)
             {
                 enemy.health -= player.attackDamage;
+                StartCoroutine(enemy.FlashRed());
+                audioSource.clip = enemySound;
+                audioSource.Play();
                 if (enemy.health <= 0)
                 {
                     audioSource.clip = deathSound;
