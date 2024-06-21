@@ -60,4 +60,4 @@ Você é Meize Goldscape, um explorador que passou anos procurando pelo lendári
 - **Gerencie seus Recursos:** Colete sucata e bônus de vida para garantir que você possa sobreviver à jornada.
 - **Melhore seu Equipamento:** Fique de olho nas melhorias para o chicote e pets para facilitar sua jornada.
 
-Boa sorte, explorador! Que você encontre o Rubi Mágico e escape da caverna com vida!
+# Boa sorte, explorador! Que você encontre o Rubi Mágico e escape da caverna com vida!
