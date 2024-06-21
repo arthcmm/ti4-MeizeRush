@@ -20,25 +20,27 @@ public class ChestScript : MonoBehaviour
     public Sprite heartChest;
     public PetNavMesh pnm;
 
+  public GameObject floatingTextPrefab;
+  private Canvas mainCanvas; // Adicione uma referência ao Canvas principal
 
-    public GameObject floatingTextPrefab;
-    private Canvas mainCanvas; // Adicione uma referência ao Canvas principal
+  void Awake() {
+    audioSource = GameObject.FindGameObjectWithTag("ChestSound")
+                      .GetComponent<AudioSource>();
+    mainCanvas =
+        GameObject
+            .FindObjectOfType<Canvas>(); // Encontre o Canvas principal na cena
+    pnm =
+        GameObject.FindGameObjectWithTag("NavMesh").GetComponent<PetNavMesh>();
+  }
 
-    void Awake()
-    {
-        audioSource = GameObject.FindGameObjectWithTag("ChestSound").GetComponent<AudioSource>();
-        mainCanvas = GameObject.FindObjectOfType<Canvas>(); // Encontre o Canvas principal na cena
-        pnm = GameObject.FindGameObjectWithTag("NavMesh").GetComponent<PetNavMesh>();
-    }
-
-    void Start()
-    {
-        aberto = false;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-        gc = GameObject.FindGameObjectWithTag("Controller").GetComponent<GameControllerScript>();
-    }
-
+  void Start() {
+    aberto = false;
+    player = GameObject.FindGameObjectWithTag("Player").transform;
+    ps =
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+    gc = GameObject.FindGameObjectWithTag("Controller")
+             .GetComponent<GameControllerScript>();
+  }
     void Update()
     {
         if (Vector3.Distance(transform.position, player.position) <= distancia)
@@ -100,35 +102,53 @@ public class ChestScript : MonoBehaviour
                 }
                 else Debug.Log("Baú já aberto");
             }
-        }
+            break;
+          case 5:
+            Debug.Log("Você ganhou um UPGRADE DE DANO!");
+            ps.attackDamage += 5;
+            gameObject.GetComponent<SpriteRenderer>().sprite = damageChest;
+            break;
+          case 6:
+          case 7:
+          case 8:
+            Debug.Log("Você ganhou MATERIAIS!");
+            gc.scrap += scrapFound;
+            gameObject.GetComponent<SpriteRenderer>().sprite = gearChest;
+            break;
+          case 9:
+            Debug.Log("Você ganhou um PET NOVO!");
+            gameObject.GetComponent<SpriteRenderer>().sprite = petChest;
+            pnm.comecar();
+            break;
+          default:
+            break;
+          }
+          StartCoroutine(DeactivateAfterAudio());
+        } else
+          Debug.Log("Baú já aberto");
+      }
     }
+  }
 
-    private void ShowFloatingText(string message)
-    {
-        if (floatingTextPrefab)
-        {
-            GameObject floatingText = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
-            TextMeshPro textMesh = floatingText.GetComponentInChildren<TextMeshPro>();
-            if (textMesh != null)
-            {
-                textMesh.text = message;
-            }
-            else
-            {
-                Debug.LogError("TextMeshPro component not found on the floating text prefab!");
-            }
-        }
-        else
-        {
-            Debug.LogError("FloatingTextPrefab is not assigned in the inspector!");
-        }
+  private void ShowFloatingText(string message) {
+    if (floatingTextPrefab) {
+      GameObject floatingText = Instantiate(
+          floatingTextPrefab, transform.position, Quaternion.identity);
+      TextMeshPro textMesh = floatingText.GetComponentInChildren<TextMeshPro>();
+      if (textMesh != null) {
+        textMesh.text = message;
+      } else {
+        Debug.LogError(
+            "TextMeshPro component not found on the floating text prefab!");
+      }
+    } else {
+      Debug.LogError("FloatingTextPrefab is not assigned in the inspector!");
     }
+  }
 
-
-    private IEnumerator DeactivateAfterAudio()
-    {
-        yield return new WaitWhile(() => audioSource.isPlaying);
-        yield return new WaitForSeconds(2f);
-        gameObject.SetActive(false);
-    }
+  private IEnumerator DeactivateAfterAudio() {
+    yield return new WaitWhile(() => audioSource.isPlaying);
+    yield return new WaitForSeconds(2f);
+    gameObject.SetActive(false);
+  }
 }
