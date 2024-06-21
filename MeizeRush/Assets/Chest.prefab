@@ -57,8 +57,11 @@ MonoBehaviour:
   gemAudio: {fileID: 8300000, guid: b86168074499b3544921aa4340da4ae8, type: 3}
   ps: {fileID: 0}
   distancia: 1.2
-  openChest: {fileID: 1768790996, guid: 0646363add2a9ae41804de3376ad11b8, type: 3}
-  floatingTextPrefab: {fileID: 8546890837065680241, guid: 1a2d5f9c95df7454daebcf89b903ee43, type: 3}
+  damageChest: {fileID: 21300000, guid: 2a82c4db1bc68134db26d0ee55f64c67, type: 3}
+  diamondChest: {fileID: 21300000, guid: 3e5826c9a337e9d4a9d435361d725ffa, type: 3}
+  gearChest: {fileID: 21300000, guid: a4087eac23cab034eb3fcccf6c1600ca, type: 3}
+  petChest: {fileID: 21300000, guid: 13a40f9de80a7234a9a990622249085d, type: 3}
+  floatingTextPrefab: {fileID: 5535497880761042577, guid: 77afc3491aba1b14e9507d5256f6ea36, type: 3}
 --- !u!212 &3476545786696388257
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -100,7 +103,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -592718899, guid: 0646363add2a9ae41804de3376ad11b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: baa8e8759fe0ffd4f97ca5f9f442a5e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

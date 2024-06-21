@@ -1,30 +1,47 @@
 using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
 public class FloatingText : MonoBehaviour
 {
     public float moveSpeed = 2f;
     public float fadeDuration = 1f;
-    private TextMeshProUGUI textMesh;
+    private TextMeshPro textMesh;
+    private Color originalColor;
+
+    void Awake()
+    {
+        textMesh = GetComponentInChildren<TextMeshPro>();
+        if (textMesh == null)
+        {
+            Debug.LogError("TextMeshPro component not found!");
+        }
+        else
+        {
+            originalColor = textMesh.color;
+        }
+    }
 
     void Start()
     {
-        textMesh = GetComponent<TextMeshProUGUI>();
-        StartCoroutine(FadeOut());
+        if (textMesh != null)
+        {
+            StartCoroutine(FadeAndMove());
+        }
     }
 
-    IEnumerator FadeOut()
+    private IEnumerator FadeAndMove()
     {
         float elapsedTime = 0f;
-        Color originalColor = textMesh.color;
+        Vector3 originalPosition = transform.position;
 
         while (elapsedTime < fadeDuration)
         {
-            transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
             float alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
             textMesh.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+
+            transform.position = originalPosition + Vector3.up * (moveSpeed * elapsedTime);
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
