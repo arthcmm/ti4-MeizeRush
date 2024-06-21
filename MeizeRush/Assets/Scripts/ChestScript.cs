@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 public class ChestScript : MonoBehaviour
 {
@@ -14,15 +13,20 @@ public class ChestScript : MonoBehaviour
     public PlayerScript ps;
     public float distancia; //1.2 parece um bom valor
     private bool aberto;
-    public Sprite openChest;
+    public Sprite damageChest;
+    public Sprite diamondChest;
+    public Sprite gearChest;
+    public Sprite petChest;
+
     public GameObject floatingTextPrefab;
+    private Canvas mainCanvas; // Adicione uma referência ao Canvas principal
 
-
-    // Start is called before the first frame update
     void Awake()
     {
         audioSource = GameObject.FindGameObjectWithTag("ChestSound").GetComponent<AudioSource>();
+        mainCanvas = GameObject.FindObjectOfType<Canvas>(); // Encontre o Canvas principal na cena
     }
+
     void Start()
     {
         aberto = false;
@@ -31,7 +35,6 @@ public class ChestScript : MonoBehaviour
         gc = GameObject.FindGameObjectWithTag("Controller").GetComponent<GameControllerScript>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Vector3.Distance(transform.position, player.position) <= distancia)
@@ -41,7 +44,6 @@ public class ChestScript : MonoBehaviour
                 if (!aberto)
                 {
                     aberto = true;
-                    gameObject.GetComponent<SpriteRenderer>().sprite = openChest;
                     int item = Random.Range(0, 9);
                     audioSource.clip = gemAudio;
                     audioSource.Play();
@@ -54,23 +56,23 @@ public class ChestScript : MonoBehaviour
                         case 4:
                             Debug.Log("Você ganhou uma GEMA!");
                             gc.score += gemScore;
-                            ShowFloatingText("GEMA!");
+                            gameObject.GetComponent<SpriteRenderer>().sprite = diamondChest;
                             break;
                         case 5:
                             Debug.Log("Você ganhou um UPGRADE DE DANO!");
                             ps.attackDamage += 5;
-                            ShowFloatingText("UPGRADE DE DANO!");
+                            gameObject.GetComponent<SpriteRenderer>().sprite = damageChest;
                             break;
                         case 6:
                         case 7:
                         case 8:
                             Debug.Log("Você ganhou MATERIAIS!");
                             gc.scrap += scrapFound;
-                            ShowFloatingText("MATERIAIS!");
+                            gameObject.GetComponent<SpriteRenderer>().sprite = gearChest;
                             break;
                         case 9:
                             Debug.Log("Você ganhou um PET NOVO!");
-                            ShowFloatingText("PET!");
+                            gameObject.GetComponent<SpriteRenderer>().sprite = petChest;
                             break;
                         default:
                             break;
@@ -81,20 +83,33 @@ public class ChestScript : MonoBehaviour
             }
         }
     }
-    private IEnumerator DeactivateAfterAudio()
-    {
-        // Wait for the audio to finish playing
-        yield return new WaitWhile(() => audioSource.isPlaying);
-
-        // Deactivate the GameObject
-        gameObject.SetActive(false);
-    }
 
     private void ShowFloatingText(string message)
     {
-        GameObject floatingText = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
-        TextMeshProUGUI textMesh = floatingText.GetComponent<TextMeshProUGUI>();
-        textMesh.text = message;
+        if (floatingTextPrefab)
+        {
+            GameObject floatingText = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+            TextMeshPro textMesh = floatingText.GetComponentInChildren<TextMeshPro>();
+            if (textMesh != null)
+            {
+                textMesh.text = message;
+            }
+            else
+            {
+                Debug.LogError("TextMeshPro component not found on the floating text prefab!");
+            }
+        }
+        else
+        {
+            Debug.LogError("FloatingTextPrefab is not assigned in the inspector!");
+        }
     }
 
+
+    private IEnumerator DeactivateAfterAudio()
+    {
+        yield return new WaitWhile(() => audioSource.isPlaying);
+        yield return new WaitForSeconds(2f);
+        gameObject.SetActive(false);
+    }
 }
