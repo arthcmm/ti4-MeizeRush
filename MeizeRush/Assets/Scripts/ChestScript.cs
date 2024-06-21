@@ -17,6 +17,9 @@ public class ChestScript : MonoBehaviour
     public Sprite diamondChest;
     public Sprite gearChest;
     public Sprite petChest;
+    public Sprite heartChest;
+    public PetNavMesh pnm;
+
 
     public GameObject floatingTextPrefab;
     private Canvas mainCanvas; // Adicione uma referência ao Canvas principal
@@ -25,6 +28,7 @@ public class ChestScript : MonoBehaviour
     {
         audioSource = GameObject.FindGameObjectWithTag("ChestSound").GetComponent<AudioSource>();
         mainCanvas = GameObject.FindObjectOfType<Canvas>(); // Encontre o Canvas principal na cena
+        pnm = GameObject.FindGameObjectWithTag("NavMesh").GetComponent<PetNavMesh>();
     }
 
     void Start()
@@ -53,10 +57,20 @@ public class ChestScript : MonoBehaviour
                         case 1:
                         case 2:
                         case 3:
-                        case 4:
                             Debug.Log("Você ganhou uma GEMA!");
                             gc.score += gemScore;
                             gameObject.GetComponent<SpriteRenderer>().sprite = diamondChest;
+                            break;
+                        case 4:
+                            Debug.Log("Você recuperou VIDA!");
+                            if (ps.life + 10 >= 100)
+                            {
+                                ps.life = 100;
+                            }
+                            else if (ps.life < 100)
+                            {
+                                ps.life += 10;
+                            }
                             break;
                         case 5:
                             Debug.Log("Você ganhou um UPGRADE DE DANO!");
@@ -73,6 +87,7 @@ public class ChestScript : MonoBehaviour
                         case 9:
                             Debug.Log("Você ganhou um PET NOVO!");
                             gameObject.GetComponent<SpriteRenderer>().sprite = petChest;
+                            pnm.comecar();
                             break;
                         default:
                             break;

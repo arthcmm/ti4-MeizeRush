@@ -1999,8 +1999,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5728107521007264145, guid: e5207fc1176a54bcea7a372048ffe403, type: 3}
+      propertyPath: lula
+      value: 
+      objectReference: {fileID: 21300000, guid: 16dff76e9e4b24feba1becdba097b3ee, type: 3}
+    - target: {fileID: 5728107521007264145, guid: e5207fc1176a54bcea7a372048ffe403, type: 3}
+      propertyPath: slime
+      value: 
+      objectReference: {fileID: -1335289663, guid: 8f8c45c9d0d5c4641aa1dc32a44e35bb, type: 3}
     - target: {fileID: 7989190160564860125, guid: e5207fc1176a54bcea7a372048ffe403, type: 3}
       propertyPath: m_Name
+      value: NavMesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 7989190160564860125, guid: e5207fc1176a54bcea7a372048ffe403, type: 3}
+      propertyPath: m_TagString
       value: NavMesh
       objectReference: {fileID: 0}
     - target: {fileID: 8570129890437278399, guid: e5207fc1176a54bcea7a372048ffe403, type: 3}
@@ -2717,7 +2729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1212005851
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3695,7 +3707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1785737599
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4880,7 +4892,7 @@ Transform:
   m_GameObject: {fileID: 5244363142777953647}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

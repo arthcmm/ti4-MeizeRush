@@ -113,7 +113,7 @@ public class RubyScript : MonoBehaviour
             {
                 // Debug.Log(valid);
                 // Debug.Log("calc:  " + (px - indexX) + "  " + System.Math.Abs(px - indexX) + " y" + (py - indexY) + "  " + System.Math.Abs(py - indexY));
-                Vector3 position = new Vector3(indexX, indexY, 0);
+                Vector3 position = new Vector3(indexX, indexY, 0.1f);
                 // Debug.Log("RANDOM RUBY POS:  " + position);
 
                 placedMatrix[indexX, indexY] = 1;
@@ -135,9 +135,10 @@ public class RubyScript : MonoBehaviour
                 gc.score += 5000;
                 audioSource.clip = victory;
                 audioSource.Play();
-                StartCoroutine(DeactivateAfterAudio());
+                //StartCoroutine(DeactivateAfterAudio());
                 // Adicione aqui o c�digo para tocar um som, se necess�rio
                 GerarSaida();
+                ruby.SetActive(false);
                 podeSair = true;
             }
         }

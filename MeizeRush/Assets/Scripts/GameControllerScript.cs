@@ -174,7 +174,7 @@ public class GameControllerScript : MonoBehaviour
                 indexY = Random.Range(0, boardManager.boardColumns - 1);
             } while (IsCloseToWall(placedMatrix, indexX, indexY));
 
-            Vector3 position = new Vector3(indexX, indexY, 0);
+            Vector3 position = new Vector3(indexX, indexY, 0.1f);
             placedMatrix[indexX, indexY] = 1;
             GameObject chestI = Instantiate(chest, position, Quaternion.identity);
             chests.Add(chestI);
