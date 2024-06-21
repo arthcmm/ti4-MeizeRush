@@ -57,7 +57,7 @@ public class GameControllerScript : MonoBehaviour
         gameScrap.text = scrap.ToString("D3");
         if (player.end)
         {
-            endgame();
+            Endgame();
         }
 
         cooldown -= Time.deltaTime;
@@ -84,11 +84,11 @@ public class GameControllerScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            pause();
+            Pause();
         }
     }
 
-    private Vector3 getRandomPosition()
+    private Vector3 GetRandomPosition()
     {
         byte[,] placedMatrix =
             new byte[boardManager.boardRows, boardManager.boardColumns];
@@ -108,7 +108,7 @@ public class GameControllerScript : MonoBehaviour
         {
             indexX = Random.Range(1, boardManager.boardRows - 2);
             indexY = Random.Range(1, boardManager.boardColumns - 2);
-        } while (isCloseToWall(placedMatrix, indexX, indexY));
+        } while (IsCloseToWall(placedMatrix, indexX, indexY));
 
         Vector3 position = new Vector3(indexX, indexY, 0);
         placedMatrix[indexX, indexY] = 1;
@@ -116,7 +116,7 @@ public class GameControllerScript : MonoBehaviour
         return position;
     }
 
-    private bool isCloseToWall(byte[,] placedMatrix, int x, int y)
+    private bool IsCloseToWall(byte[,] placedMatrix, int x, int y)
     {
         if (placedMatrix[x, y] >= 1 || placedMatrix[x + 1, y] >= 1 ||
             placedMatrix[x, y + 1] >= 1 || placedMatrix[x + 1, y + 1] >= 1)
@@ -144,7 +144,7 @@ public class GameControllerScript : MonoBehaviour
         // }
         // // Debug.Log("RANDOM FLOOR POS:  " + element);
         // Vector3 newPos = new Vector3(element.x, element.y, 0);
-        playerTransform.position = getRandomPosition();
+        playerTransform.position = GetRandomPosition();
     }
 
     void InstantiateObjectsRandomly()
@@ -169,7 +169,7 @@ public class GameControllerScript : MonoBehaviour
             {
                 indexX = Random.Range(0, boardManager.boardRows - 1);
                 indexY = Random.Range(0, boardManager.boardColumns - 1);
-            } while (isCloseToWall(placedMatrix, indexX, indexY));
+            } while (IsCloseToWall(placedMatrix, indexX, indexY));
 
             Vector3 position = new Vector3(indexX, indexY, 0);
             placedMatrix[indexX, indexY] = 1;
@@ -178,7 +178,7 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
-    void endgame()
+    void Endgame()
     {
         paused=true;
         gameScoreFinal.text = gameScore.text;
@@ -186,13 +186,13 @@ public class GameControllerScript : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    void pause()
+    void Pause()
     {
         Time.timeScale = 0;
         pause_canvas.gameObject.SetActive(true);
         paused = true;
     }
-    public void unpause()
+    public void Unpause()
     {
     
         pause_canvas.gameObject.SetActive(false);

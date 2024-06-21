@@ -2,37 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviour : MonoBehaviour {
+public class EnemyBehaviour : MonoBehaviour
+{
   public float health = 100;
   public int distancia;
   public Transform enemyPos;
   public GameObject thisEnemy;
   private GameObject player;
+  private GameObject controller;
+  private RandomPlaceEnemies randomPlaceEnemies;
   private PlayerScript playerScript;
+  public SpriteRenderer spriteRenderer;
 
   public LayerMask
       placementMask; // Set up a LayerMask in the Inspector to check only the
 
   private float cooldownTimer = 1.0f;
+
+  public IEnumerator FlashRed()
+  {
+    spriteRenderer.color = Color.red;
+    yield return new WaitForSeconds(0.1f);
+    spriteRenderer.color = Color.white;
+  }
+
   // Start is called before the first frame update
-  void Start() {
+  void Start()
+  {
     player = GameObject.FindGameObjectWithTag("Player");
     playerScript = player.GetComponent<PlayerScript>();
+    controller = GameObject.FindGameObjectWithTag("Controller");
+    randomPlaceEnemies = controller.GetComponent<RandomPlaceEnemies>();
+
   }
 
   // Update is called once per frame
-  void Update() {
+  void Update()
+  {
 
     // enemyPos = this.transform; // atualiza a posicao desse inimigo, eu acho
     cooldownTimer -= Time.deltaTime;
-    if (health <= 0) {
+    if (health <= 0)
+    {
       thisEnemy.SetActive(false);
+      randomPlaceEnemies.enemyCount--;
       health = 100; // reseta para respawnar o inimigo depois
     }
 
     if (Vector3.Distance(transform.position, player.transform.position) <=
-        distancia) {
-      if (cooldownTimer <= 0.0f) {
+        distancia)
+    {
+      if (cooldownTimer <= 0.0f)
+      {
         playerScript.life -= 5;
         // Debug.Log("Player hit: " + playerScript.life);
         cooldownTimer = 1.0f;
@@ -57,8 +78,10 @@ public class EnemyBehaviour : MonoBehaviour {
 
     // If there is an object, destroy the first one found; otherwise, place a
     // new object
-    if (hits.Length > 0) {
-      if (hits[0].CompareTag("Trap")) {
+    if (hits.Length > 0)
+    {
+      if (hits[0].CompareTag("Trap"))
+      {
         thisEnemy.SetActive(false);
         health = 100; // reseta para respawnar o inimigo depois
         // Log and remove the first interactable object encountered
