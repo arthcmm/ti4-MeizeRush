@@ -1,7 +1,8 @@
 # Meize Rush
 
 Bem-vindo ao **Meize Rush**! Neste emocionante jogo de aventura, você joga como o destemido explorador **Meize Goldscape**, que descobriu a existência de um artefato mágico escondido nas profundezas de uma caverna: o **Rubi Mágico**. Mas cuidado, a caverna é um labirinto cheio de perigos, e você precisará de toda a sua inteligência e habilidades para encontrar o Rubi e sair com vida.\
-Caso queira ver uma breve demonstração do nosso jogo, a gameplay de uma run completa está disponível aqui: https://youtu.be/AdfFZBHqlm8
+Caso queira ver uma breve demonstração do nosso jogo, a gameplay de uma run completa está disponível aqui: https://youtu.be/AdfFZBHqlm8 \
+Run com comentários: https://youtu.be/IfEdg2CrwKY
 
 ## Instalação e Como Jogar
 
