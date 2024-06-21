@@ -2,6 +2,20 @@
 
 Bem-vindo ao **Meize Rush**! Neste emocionante jogo de aventura, você joga como o destemido explorador **Meize Goldscape**, que descobriu a existência de um artefato mágico escondido nas profundezas de uma caverna: o **Rubi Mágico**. Mas cuidado, a caverna é um labirinto cheio de perigos, e você precisará de toda a sua inteligência e habilidades para encontrar o Rubi e sair com vida.
 
+## Instalação e Como Jogar
+
+### Opção 1
+
+Rode o Executável.
+
+### Opção 2
+1. Clone o repositório:
+   ```sh
+   git clone https://github.com/seuusuario/meize-rush.git
+2. Navegue até o diretório com a Unity:
+3. Aperte o Play!
+
+
 ## História
 
 Você é Meize Goldscape, um explorador que passou anos procurando pelo lendário Rubi Mágico. Ao descobrir sua localização, você entra na caverna, apenas para se ver preso em um complexo labirinto. Seu objetivo é navegar pelo labirinto, encontrar o Rubi Mágico e escapar com vida.
@@ -101,18 +115,5 @@ Você é Meize Goldscape, um explorador que passou anos procurando pelo lendári
 - **Melhore seu Equipamento:** Fique de olho nas melhorias para o chicote e pets para facilitar sua jornada.
 
 Boa sorte, explorador! Que você encontre o Rubi Mágico e escape da caverna com vida!
-
-## Instalação
-
-### Opção 1
-
-Rode o Executável.
-
-### Opção 2
-1. Clone o repositório:
-   ```sh
-   git clone https://github.com/seuusuario/meize-rush.git
-2. Navegue até o diretório com a Unity:
-3. Aperte o Play!
 
 
