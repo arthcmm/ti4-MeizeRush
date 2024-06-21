@@ -39,10 +39,13 @@ public class CrafttableScript : MonoBehaviour
 
     private void Update()
     {
-        if (isOnRange && Input.GetKeyDown(KeyCode.E))
+        if (isOnRange && Input.GetKeyDown(KeyCode.E) && gameControllerScript.scrap > 0)
         {
             //OpenMenu();
-            giveItem("Trap");
+            for (int i = 0; i < gameControllerScript.scrap / 15; i++)
+            {
+                giveItem("Trap");
+            }
             mesa.SetActive(false);
         }
     }
