@@ -50,7 +50,7 @@ public class PetNavMesh : MonoBehaviour
         }
     }
 
-    public void comecar()
+    public bool comecar()
     {
         int num = Random.Range(0, 10);
 
@@ -69,6 +69,9 @@ public class PetNavMesh : MonoBehaviour
             navAgent.updateRotation = false;
             navAgent.updateUpAxis = false;
             navAgent.stoppingDistance = 2f;
+            return true;
         }
+
+        return false;
     }
 }

@@ -317,8 +317,8 @@ MonoBehaviour:
   playerTransform: {fileID: 563919657948159362}
   minDistanceToPlayer: 10
   minDistanceBetweenChests: 5
-  minChests: 5
-  maxChests: 10
+  minChests: 10
+  maxChests: 20
   sliderHealth: {fileID: 1017951255}
   sliderStamina: {fileID: 392775440}
   chests: []
@@ -3484,6 +3484,7 @@ MonoBehaviour:
   audioSource: {fileID: 1677363255}
   deathSound: {fileID: 8300000, guid: 1e3a6bf1b3935d443b7cf8d8ffc765ba, type: 3}
   enemySound: {fileID: 8300000, guid: 862cf98bb5cf6fe4f816751e0cad5d95, type: 3}
+  gc: {fileID: 40888769}
 --- !u!60 &1304271717
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class AttackArea : MonoBehaviour
     public Animator animator;
     public AudioSource audioSource;
     public AudioClip deathSound, enemySound;
+    public GameControllerScript gc;
     public Vector2 pointerPosition { get; set; }
 
     // public Vector2 movement;
@@ -35,6 +36,7 @@ public class AttackArea : MonoBehaviour
                 {
                     audioSource.clip = deathSound;
                     audioSource.Play();
+                    gc.score += 5;
                 }
                 // Debug.Log("Hitou o inimigo: " + enemy.name + ", nova vida: " + enemy.health);
             }
