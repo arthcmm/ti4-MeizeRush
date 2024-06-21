@@ -8,7 +8,7 @@ public class ChestScript : MonoBehaviour
     [SerializeField] int gemScore = 100;
     [SerializeField] int scrapFound = 30;
     public AudioSource audioSource;
-    public AudioClip gemAudio;
+    public AudioClip gemAudio, dmgAudio, lifeAudio, matAudio;
     private GameControllerScript gc;
     public PlayerScript ps;
     public float distancia; //1.2 parece um bom valor
@@ -49,8 +49,6 @@ public class ChestScript : MonoBehaviour
                 {
                     aberto = true;
                     int item = Random.Range(0, 9);
-                    audioSource.clip = gemAudio;
-                    audioSource.Play();
                     switch (item)
                     {
                         case 0:
@@ -58,12 +56,14 @@ public class ChestScript : MonoBehaviour
                         case 2:
                         case 3:
                             Debug.Log("Você ganhou uma GEMA!");
+                            audioSource.clip = gemAudio;
                             gc.score += gemScore;
                             gameObject.GetComponent<SpriteRenderer>().sprite = diamondChest;
                             break;
                         case 4:
                             gameObject.GetComponent<SpriteRenderer>().sprite = heartChest;
                             Debug.Log("Você recuperou VIDA!");
+                            audioSource.clip = lifeAudio;
                             if (ps.life + 10 >= 100)
                             {
                                 ps.life = 100;
@@ -75,6 +75,7 @@ public class ChestScript : MonoBehaviour
                             break;
                         case 5:
                             Debug.Log("Você ganhou um UPGRADE DE DANO!");
+                            audioSource.clip = dmgAudio;
                             ps.attackDamage += 5;
                             gameObject.GetComponent<SpriteRenderer>().sprite = damageChest;
                             break;
@@ -82,6 +83,7 @@ public class ChestScript : MonoBehaviour
                         case 7:
                         case 8:
                             Debug.Log("Você ganhou MATERIAIS!");
+                            audioSource.clip = matAudio;
                             gc.scrap += scrapFound;
                             gameObject.GetComponent<SpriteRenderer>().sprite = gearChest;
                             break;
@@ -93,6 +95,7 @@ public class ChestScript : MonoBehaviour
                         default:
                             break;
                     }
+                    audioSource.Play();
                     StartCoroutine(DeactivateAfterAudio());
                 }
                 else Debug.Log("Baú já aberto");
