@@ -6,46 +6,55 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
-public class GameControllerScript : MonoBehaviour
-{
-    public int mapSize = 50;
-    public int scrap;
-    public int score;
-    public bool paused = false;
-    public Canvas win_canvas;
-    public Canvas death_canvas;
-    public Canvas pause_canvas;
-    public Text gameScore;
-    public Text gameScrap;
-    public Text gameScoreFinal;
-    public Transform spawnPoint;
-    public GameObject chest;
-    public PlayerScript player;
-    private BoardManager boardManager;
-    public Transform playerTransform; // Refer�ncia ao transform do jogador
-    public float minDistanceToPlayer =
-        10f; // Dist�ncia m�nima entre ba� e jogador
-    public float minDistanceBetweenChests = 5f; // Dist�ncia m�nima entre ba�s
-    public int minChests;
-    public int maxChests;
+public class GameControllerScript : MonoBehaviour {
+  public int mapSize = 50;
+  public int scrap;
+  public int score;
+  public bool paused = false;
+  public Canvas win_canvas;
+  public Canvas death_canvas;
+  public Canvas pause_canvas;
+  public Text gameScore;
+  public Text gameScrap;
+  public Text gameScoreFinal;
+  public Transform spawnPoint;
+  public GameObject chest;
+  public PlayerScript player;
+  public GameObject petPrefab;
+  private BoardManager boardManager;
+  public Transform playerTransform; // Refer�ncia ao transform do jogador
+  public float minDistanceToPlayer =
+      10f; // Dist�ncia m�nima entre ba� e jogador
+  public float minDistanceBetweenChests = 5f; // Dist�ncia m�nima entre ba�s
+  public int minChests;
+  public int maxChests;
 
-    public Slider sliderHealth;
-    public Slider sliderStamina;
+  public Slider sliderHealth;
+  public Slider sliderStamina;
 
-    public List<GameObject> chests = new List<GameObject>();
-    private float cooldown = 1.0f;
-    private bool spawned = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        boardManager =
-            GameObject.FindGameObjectWithTag("Board").GetComponent<BoardManager>();
-        // int chestNumber = Random.Range(2, 6); // valores aleatorios
-        // spawnChests(chestNumber);
-        // spawnPlayer();
-        win_canvas.gameObject.SetActive(false);
-        death_canvas.gameObject.SetActive(false);
-        pause_canvas.gameObject.SetActive(false);
+  public List<GameObject> chests = new List<GameObject>();
+  private float cooldown = 1.0f;
+  private bool spawned = false;
+  // Start is called before the first frame update
+  void Start() {
+    boardManager =
+        GameObject.FindGameObjectWithTag("Board").GetComponent<BoardManager>();
+    // int chestNumber = Random.Range(2, 6); // valores aleatorios
+    // spawnChests(chestNumber);
+    // spawnPlayer();
+    win_canvas.gameObject.SetActive(false);
+    death_canvas.gameObject.SetActive(false);
+    pause_canvas.gameObject.SetActive(false);
+  }
+
+  // Update is called once per frame
+  void Update() {
+    score = Mathf.Clamp(score, 0, 9999);
+    scrap = Mathf.Clamp(scrap, 0, 999);
+    gameScore.text = score.ToString("D4");
+    gameScrap.text = scrap.ToString("D3");
+    if (player.end) {
+      endgame();
     }
 
     // Update is called once per frame
@@ -130,6 +139,7 @@ public class GameControllerScript : MonoBehaviour
         }
         return false;
     }
+  }
 
     void spawnPlayer()
     {
@@ -198,5 +208,26 @@ public class GameControllerScript : MonoBehaviour
         pause_canvas.gameObject.SetActive(false);
         Time.timeScale = 1;
         paused = false;
+
     }
+  }
+
+  void endgame() {
+    paused = true;
+    gameScoreFinal.text = gameScore.text;
+    win_canvas.gameObject.SetActive(true);
+    Time.timeScale = 0;
+  }
+
+  void pause() {
+    Time.timeScale = 0;
+    pause_canvas.gameObject.SetActive(true);
+    paused = true;
+  }
+  public void unpause() {
+
+    pause_canvas.gameObject.SetActive(false);
+    Time.timeScale = 1;
+    paused = false;
+  }
 }

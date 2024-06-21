@@ -17,6 +17,9 @@ TagManager:
   - Whip
   - VictorySound
   - PlayerA*
+  - Pet
+  - Floor
+  - NavMesh
   layers:
   - Default
   - TransparentFX
