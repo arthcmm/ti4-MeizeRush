@@ -20,6 +20,7 @@ TagManager:
   - Pet
   - Floor
   - NavMesh
+  - EnemySounds
   layers:
   - Default
   - TransparentFX
