@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.9078, y: -4.4157}
+  m_AnchoredPosition: {x: 2.9077988, y: -4.415699}
   m_SizeDelta: {x: -15.7239, y: -53.6338}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &16740348
@@ -364,7 +364,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -419,7 +419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.9078, y: -4.4157}
+  m_AnchoredPosition: {x: 2.9077988, y: -4.415699}
   m_SizeDelta: {x: -15.7239, y: -53.6338}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &348850124
@@ -589,10 +589,10 @@ Canvas:
   m_GameObject: {fileID: 439709878}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 40421558}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -919,6 +919,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804015527}
   m_CullTransparentMesh: 1
+--- !u!1001 &941728616
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 453687623667769689, guid: 6ae5a98ade79ce94aad3f87131ba0d6f, type: 3}
+      propertyPath: m_Name
+      value: Global Volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471844700384523930, guid: 6ae5a98ade79ce94aad3f87131ba0d6f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471844700384523930, guid: 6ae5a98ade79ce94aad3f87131ba0d6f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471844700384523930, guid: 6ae5a98ade79ce94aad3f87131ba0d6f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471844700384523930, guid: 6ae5a98ade79ce94aad3f87131ba0d6f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471844700384523930, guid: 6ae5a98ade79ce94aad3f87131ba0d6f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471844700384523930, guid: 6ae5a98ade79ce94aad3f87131ba0d6f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471844700384523930, guid: 6ae5a98ade79ce94aad3f87131ba0d6f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471844700384523930, guid: 6ae5a98ade79ce94aad3f87131ba0d6f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471844700384523930, guid: 6ae5a98ade79ce94aad3f87131ba0d6f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471844700384523930, guid: 6ae5a98ade79ce94aad3f87131ba0d6f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3095391880646367533, guid: 6ae5a98ade79ce94aad3f87131ba0d6f, type: 3}
+      propertyPath: priority
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ae5a98ade79ce94aad3f87131ba0d6f, type: 3}
 --- !u!1 &1563664134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,6 +1605,7 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 941728616}
   - {fileID: 40421559}
   - {fileID: 439709882}
   - {fileID: 762340891}
