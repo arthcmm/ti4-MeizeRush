@@ -7,6 +7,8 @@ public class RubyScript : MonoBehaviour
 {
     private bool podeSair = false;
     public Vector2Int randomPosition = new Vector2Int(90000, 90000);
+    public AudioSource audioSource;
+    public AudioClip victory;
     private PlayerScript playerScript;
     private GameObject player;
     public GameControllerScript gc;
@@ -25,6 +27,10 @@ public class RubyScript : MonoBehaviour
     private float spawnCooldown = 1.0f;
     private bool spawned = false;
 
+    void Awake()
+    {
+        audioSource = GameObject.FindGameObjectWithTag("VictorySound").GetComponent<AudioSource>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -102,13 +108,13 @@ public class RubyScript : MonoBehaviour
         {
             int indexX = Random.Range(0, boardManager.boardRows - 1);
             int indexY = Random.Range(0, boardManager.boardColumns - 1);
-            bool valid = (System.Math.Abs(px - indexX) >= 40 || System.Math.Abs(py - indexY) >= 40);
+            bool valid = System.Math.Abs(px - indexX) >= 40 || System.Math.Abs(py - indexY) >= 40;
             if (valid && placedMatrix[indexX, indexY] == 0)
             {
-                Debug.Log(valid);
-                Debug.Log("calc:  " + (px - indexX) + "  " + System.Math.Abs(px - indexX) + " y" + (py - indexY) + "  " + System.Math.Abs(py - indexY));
+                // Debug.Log(valid);
+                // Debug.Log("calc:  " + (px - indexX) + "  " + System.Math.Abs(px - indexX) + " y" + (py - indexY) + "  " + System.Math.Abs(py - indexY));
                 Vector3 position = new Vector3(indexX, indexY, 0);
-                Debug.Log("RANDOM RUBY POS:  " + position);
+                // Debug.Log("RANDOM RUBY POS:  " + position);
 
                 placedMatrix[indexX, indexY] = 1;
                 if (spawnCooldown <= 0.0f)
@@ -127,15 +133,26 @@ public class RubyScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 gc.score += 5000;
+                audioSource.clip = victory;
+                audioSource.Play();
+                StartCoroutine(DeactivateAfterAudio());
                 // Adicione aqui o c�digo para tocar um som, se necess�rio
-                ruby.SetActive(false);
-                gerarSaida();
+                GerarSaida();
                 podeSair = true;
             }
         }
     }
+    private IEnumerator DeactivateAfterAudio()
+    {
+        // Wait for the audio to finish playing
+        yield return new WaitWhile(() => audioSource.isPlaying);
 
-    private void gerarSaida()
+        // Deactivate the GameObject
+        ruby.SetActive(false);
+
+    }
+
+    private void GerarSaida()
     {
         HashSet<Vector2Int> positions = boardManager.walls;
         int randomIndex = Random.Range(0, positions.Count);

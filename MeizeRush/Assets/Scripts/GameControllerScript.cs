@@ -21,6 +21,7 @@ public class GameControllerScript : MonoBehaviour
     public Transform spawnPoint;
     public GameObject chest;
     public PlayerScript player;
+    public GameObject petPrefab;
     private BoardManager boardManager;
     public Transform playerTransform; // Refer�ncia ao transform do jogador
     public float minDistanceToPlayer =
@@ -77,18 +78,19 @@ public class GameControllerScript : MonoBehaviour
         if (player.life <= 0) // para o jogo quando o jogador perde, passar essa
                               // verificação para o gamecontroller depois
         {
-            paused=true;
+            paused = true;
             death_canvas.gameObject.SetActive(true);
             Time.timeScale = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            pause();
+            Pause();
         }
+
     }
 
-    private Vector3 getRandomPosition()
+    private Vector3 GetRandomPosition()
     {
         byte[,] placedMatrix =
             new byte[boardManager.boardRows, boardManager.boardColumns];
@@ -108,7 +110,7 @@ public class GameControllerScript : MonoBehaviour
         {
             indexX = Random.Range(1, boardManager.boardRows - 2);
             indexY = Random.Range(1, boardManager.boardColumns - 2);
-        } while (isCloseToWall(placedMatrix, indexX, indexY));
+        } while (IsCloseToWall(placedMatrix, indexX, indexY));
 
         Vector3 position = new Vector3(indexX, indexY, 0);
         placedMatrix[indexX, indexY] = 1;
@@ -116,7 +118,7 @@ public class GameControllerScript : MonoBehaviour
         return position;
     }
 
-    private bool isCloseToWall(byte[,] placedMatrix, int x, int y)
+    private bool IsCloseToWall(byte[,] placedMatrix, int x, int y)
     {
         if (placedMatrix[x, y] >= 1 || placedMatrix[x + 1, y] >= 1 ||
             placedMatrix[x, y + 1] >= 1 || placedMatrix[x + 1, y + 1] >= 1)
@@ -131,6 +133,7 @@ public class GameControllerScript : MonoBehaviour
         return false;
     }
 
+
     void spawnPlayer()
     {
         // bool isWall = true;
@@ -144,7 +147,7 @@ public class GameControllerScript : MonoBehaviour
         // }
         // // Debug.Log("RANDOM FLOOR POS:  " + element);
         // Vector3 newPos = new Vector3(element.x, element.y, 0);
-        playerTransform.position = getRandomPosition();
+        playerTransform.position = GetRandomPosition();
     }
 
     void InstantiateObjectsRandomly()
@@ -169,7 +172,7 @@ public class GameControllerScript : MonoBehaviour
             {
                 indexX = Random.Range(0, boardManager.boardRows - 1);
                 indexY = Random.Range(0, boardManager.boardColumns - 1);
-            } while (isCloseToWall(placedMatrix, indexX, indexY));
+            } while (IsCloseToWall(placedMatrix, indexX, indexY));
 
             Vector3 position = new Vector3(indexX, indexY, 0);
             placedMatrix[indexX, indexY] = 1;
@@ -178,9 +181,31 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
+    void Endgame()
+    {
+        paused = true;
+        gameScoreFinal.text = gameScore.text;
+        win_canvas.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    void Pause()
+    {
+        Time.timeScale = 0;
+        pause_canvas.gameObject.SetActive(true);
+        paused = true;
+    }
+    public void Unpause()
+    {
+
+        pause_canvas.gameObject.SetActive(false);
+        Time.timeScale = 1;
+        paused = false;
+
+    }
     void endgame()
     {
-        paused=true;
+        paused = true;
         gameScoreFinal.text = gameScore.text;
         win_canvas.gameObject.SetActive(true);
         Time.timeScale = 0;
@@ -194,9 +219,12 @@ public class GameControllerScript : MonoBehaviour
     }
     public void unpause()
     {
-    
+
         pause_canvas.gameObject.SetActive(false);
         Time.timeScale = 1;
         paused = false;
     }
 }
+
+
+

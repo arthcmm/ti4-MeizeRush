@@ -230,35 +230,28 @@ public class FindPathAStar : MonoBehaviour
       }
     }
   }
+  private void OnTriggerStay2D(Collider2D other)
+  {
+    if (other.CompareTag("Player"))
+    {
+      hasStarted = true;
+    }
 
+  }
   private void OnTriggerEnter2D(Collider2D other)
   {
-
-    if (other.gameObject == player)
+    if (other.CompareTag("Player"))
     {
       hasStarted = true;
     }
   }
-  // private void OnCollisionExit2D(Collision2D other)
-  // {
-  //   if (other.GetType() == typeof(Collider2D))
-  //   {
-  //     if (other.gameObject == player)
-  //     {
-  //       hasStarted = false;
-  //     }
-
-  //   }
-  // }
 
   private void OnTriggerExit2D(Collider2D other)
   {
-    if (other.CompareTag("EnemyA*"))
+
+    if (other.CompareTag("Player"))
     {
-      if (other.gameObject == player)
-      {
-        hasStarted = false;
-      }
+      hasStarted = false;
     }
   }
 
